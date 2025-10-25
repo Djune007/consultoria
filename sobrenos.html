@@ -1,0 +1,1087 @@
+<!DOCTYPE html>
+<html lang="pt">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CIDHS - Sobre Nós</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            color: #1a1a1a;
+            overflow-x: hidden;
+        }
+
+        /* Header & Navigation */
+        header {
+            position: fixed;
+            top: 0;
+            width: 100%;
+            background: #fff;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+            z-index: 1000;
+        }
+
+        nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 20px 40px;
+        }
+
+        .logo {
+            font-size: 32px;
+            font-weight: bold;
+            color: #e63946;
+            letter-spacing: 2px;
+        }
+
+        .nav-links {
+            display: flex;
+            list-style: none;
+            gap: 40px;
+        }
+
+        .nav-links a {
+            text-decoration: none;
+            color: #333;
+            font-weight: 500;
+            transition: color 0.3s;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .nav-links a:hover {
+            color: #e63946;
+        }
+
+        /* Hero Banner */
+        .page-hero {
+            background: linear-gradient(135deg, rgba(30, 58, 95, 0.95) 0%, rgba(45, 90, 123, 0.95) 100%);
+            background-image: linear-gradient(135deg, rgba(30, 58, 95, 0.95) 0%, rgba(45, 90, 123, 0.95) 100%), url('https://images.unsplash.com/photo-1521737711867-e3b97375f902?w=1920');
+            background-size: cover;
+            background-position: center;
+            padding: 150px 40px 80px;
+            text-align: center;
+            color: #fff;
+        }
+
+        .page-hero h1 {
+            font-size: 56px;
+            margin-bottom: 20px;
+            animation: fadeInUp 0.8s;
+        }
+
+        .page-hero p {
+            font-size: 20px;
+            max-width: 800px;
+            margin: 0 auto;
+            opacity: 0.9;
+            animation: fadeInUp 1s;
+        }
+
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        /* Content Section */
+        .content-section {
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 80px 40px;
+        }
+
+        .section-title {
+            font-size: 42px;
+            color: #1e3a5f;
+            margin-bottom: 30px;
+            display: flex;
+            align-items: center;
+            gap: 20px;
+        }
+
+        .section-title i {
+            color: #e63946;
+        }
+
+        .intro-text {
+            font-size: 18px;
+            line-height: 1.8;
+            color: #666;
+            margin-bottom: 50px;
+        }
+
+        /* Info Cards */
+        .info-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+            margin-bottom: 60px;
+        }
+
+        .info-card {
+            background: #fff;
+            padding: 40px;
+            border-radius: 15px;
+            box-shadow: 0 5px 20px rgba(0,0,0,0.08);
+            transition: all 0.3s;
+            border-top: 4px solid #e63946;
+        }
+
+        .info-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 15px 40px rgba(0,0,0,0.15);
+        }
+
+        .info-card-icon {
+            width: 70px;
+            height: 70px;
+            background: linear-gradient(135deg, #e63946, #c62a35);
+            border-radius: 15px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-bottom: 25px;
+            font-size: 32px;
+            color: #fff;
+        }
+
+        .info-card h3 {
+            font-size: 24px;
+            color: #1e3a5f;
+            margin-bottom: 15px;
+        }
+
+        .info-card p {
+            color: #666;
+            line-height: 1.7;
+        }
+
+        /* Organizational Structure */
+        .org-structure {
+            background: #f8f9fa;
+            padding: 60px;
+            border-radius: 20px;
+            margin: 60px 0;
+        }
+
+        .org-structure h3 {
+            font-size: 32px;
+            color: #1e3a5f;
+            margin-bottom: 40px;
+            text-align: center;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 15px;
+        }
+
+        .org-chart {
+            display: flex;
+            flex-direction: column;
+            gap: 30px;
+        }
+
+        .org-level {
+            background: #fff;
+            padding: 30px;
+            border-radius: 15px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+        }
+
+        .org-level h4 {
+            font-size: 24px;
+            color: #1e3a5f;
+            margin-bottom: 20px;
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+
+        .org-level h4 i {
+            width: 40px;
+            height: 40px;
+            background: #e63946;
+            border-radius: 8px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: #fff;
+            font-size: 20px;
+        }
+
+        .org-level ul {
+            list-style: none;
+            padding-left: 20px;
+        }
+
+        .org-level ul li {
+            padding: 10px 0;
+            color: #555;
+            position: relative;
+            padding-left: 30px;
+        }
+
+        .org-level ul li:before {
+            content: '\f00c';
+            font-family: 'Font Awesome 6 Free';
+            font-weight: 900;
+            position: absolute;
+            left: 0;
+            color: #e63946;
+        }
+
+        /* Revenue Sources */
+        .revenue-section {
+            background: linear-gradient(135deg, #1e3a5f 0%, #2d5a7b 100%);
+            color: #fff;
+            padding: 80px 40px;
+            margin: 60px 0;
+        }
+
+        .revenue-container {
+            max-width: 1400px;
+            margin: 0 auto;
+        }
+
+        .revenue-section h3 {
+            font-size: 38px;
+            margin-bottom: 50px;
+            text-align: center;
+        }
+
+        .revenue-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 30px;
+        }
+
+        .revenue-item {
+            background: rgba(255,255,255,0.1);
+            backdrop-filter: blur(10px);
+            padding: 30px;
+            border-radius: 15px;
+            border: 1px solid rgba(255,255,255,0.2);
+            transition: all 0.3s;
+            text-align: center;
+        }
+
+        .revenue-item:hover {
+            background: rgba(255,255,255,0.2);
+            transform: translateY(-5px);
+        }
+
+        .revenue-item i {
+            font-size: 48px;
+            color: #e63946;
+            margin-bottom: 20px;
+        }
+
+        .revenue-item h4 {
+            font-size: 20px;
+            margin-bottom: 10px;
+        }
+
+        /* Partners Section */
+        .partners-section {
+            background: #fff;
+            padding: 80px 40px;
+        }
+
+        .partners-container {
+            max-width: 1400px;
+            margin: 0 auto;
+        }
+
+        .partners-section h3 {
+            font-size: 38px;
+            color: #1e3a5f;
+            margin-bottom: 50px;
+            text-align: center;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 15px;
+        }
+
+        .partners-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 40px;
+        }
+
+        .partner-card {
+            background: #f8f9fa;
+            padding: 40px;
+            border-radius: 15px;
+            display: flex;
+            align-items: center;
+            gap: 30px;
+            transition: all 0.3s;
+        }
+
+        .partner-card:hover {
+            background: #e8e9ea;
+            transform: scale(1.02);
+        }
+
+        .partner-avatar {
+            width: 120px;
+            height: 120px;
+            border-radius: 50%;
+            background: linear-gradient(135deg, #1e3a5f, #e63946);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 42px;
+            color: #fff;
+            font-weight: bold;
+            flex-shrink: 0;
+        }
+
+        .partner-info h4 {
+            font-size: 26px;
+            color: #1e3a5f;
+            margin-bottom: 10px;
+        }
+
+        .partner-info .role {
+            color: #e63946;
+            font-weight: 600;
+            font-size: 18px;
+            margin-bottom: 15px;
+        }
+
+        .partner-info .percentage {
+            background: #1e3a5f;
+            color: #fff;
+            padding: 8px 20px;
+            border-radius: 20px;
+            display: inline-block;
+            font-size: 14px;
+            font-weight: 600;
+        }
+
+        /* Legal Section */
+        .legal-section {
+            background: #f8f9fa;
+            padding: 80px 40px;
+        }
+
+        .legal-container {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .legal-section h3 {
+            font-size: 38px;
+            color: #1e3a5f;
+            margin-bottom: 40px;
+            text-align: center;
+        }
+
+        .legal-item {
+            background: #fff;
+            padding: 30px;
+            border-radius: 15px;
+            margin-bottom: 20px;
+            box-shadow: 0 3px 15px rgba(0,0,0,0.08);
+        }
+
+        .legal-item h4 {
+            font-size: 22px;
+            color: #1e3a5f;
+            margin-bottom: 15px;
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+
+        .legal-item h4 i {
+            color: #e63946;
+        }
+
+        .legal-item p, .legal-item ul {
+            color: #666;
+            line-height: 1.8;
+        }
+
+        .legal-item ul {
+            list-style: none;
+            padding-left: 20px;
+        }
+
+        .legal-item ul li {
+            padding: 8px 0;
+            position: relative;
+            padding-left: 25px;
+        }
+
+        .legal-item ul li:before {
+            content: '\f105';
+            font-family: 'Font Awesome 6 Free';
+            font-weight: 900;
+            position: absolute;
+            left: 0;
+            color: #e63946;
+        }
+
+        /* Footer */
+        footer {
+            background: #0a1929;
+            color: #fff;
+            padding: 60px 40px 30px;
+        }
+
+        .footer-content {
+            max-width: 1400px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 40px;
+            margin-bottom: 40px;
+        }
+
+        .footer-section h4 {
+            color: #e63946;
+            margin-bottom: 20px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .footer-section ul {
+            list-style: none;
+        }
+
+        .footer-section ul li {
+            margin-bottom: 10px;
+        }
+
+        .footer-section a {
+            color: rgba(255,255,255,0.7);
+            text-decoration: none;
+            transition: color 0.3s;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .footer-section a:hover {
+            color: #e63946;
+        }
+
+        .footer-bottom {
+            text-align: center;
+            padding-top: 30px;
+            border-top: 1px solid rgba(255,255,255,0.1);
+            color: rgba(255,255,255,0.6);
+        }
+
+        /* Animations */
+        .fade-in {
+            opacity: 0;
+            transform: translateY(30px);
+            transition: all 0.8s;
+        }
+
+        .fade-in.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .page-hero h1 {
+                font-size: 36px;
+            }
+
+            .section-title {
+                font-size: 32px;
+            }
+
+            .partners-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .partner-card {
+                flex-direction: column;
+                text-align: center;
+            }
+
+            .nav-links {
+                display: none;
+            }
+        }
+        /* Estilo do botão hambúrguer */
+.hamburger {
+  display: none;
+  flex-direction: column;
+  background: none;
+  border: none;
+  cursor: pointer;
+  padding: 5px;
+  z-index: 1001;
+}
+
+.hamburger span {
+  width: 25px;
+  height: 3px;
+  background: #333;
+  margin: 3px 0;
+  transition: 0.3s;
+  border-radius: 2px;
+}
+
+/* Menu mobile */
+@media (max-width: 768px) {
+  .nav-links {
+    position: fixed;
+    top: 80px;
+    left: 0;
+    right: 0;
+    background: #fff;
+    flex-direction: column;
+    align-items: center;
+    padding: 20px 0;
+    box-shadow: 0 10px 10px rgba(0,0,0,0.1);
+    display: none; /* escondido por padrão */
+    z-index: 1000;
+  }
+
+  .nav-links.active {
+    display: flex;
+  }
+
+  .hamburger {
+    display: flex;
+  }
+
+  /* Animação do hambúrguer ao abrir */
+  .hamburger.active span:nth-child(1) {
+    transform: rotate(-45deg) translate(-5px, 6px);
+  }
+  .hamburger.active span:nth-child(2) {
+    opacity: 0;
+  }
+  .hamburger.active span:nth-child(3) {
+    transform: rotate(45deg) translate(-5px, -6px);
+  }
+}
+
+/* Estilo do botão hambúrguer */
+.hamburger {
+  display: none;
+  flex-direction: column;
+  background: none;
+  border: none;
+  cursor: pointer;
+  padding: 5px;
+  z-index: 1001;
+}
+
+.hamburger span {
+  width: 25px;
+  height: 3px;
+  background: #333;
+  margin: 3px 0;
+  transition: 0.3s;
+  border-radius: 2px;
+}
+
+/* Menu mobile */
+@media (max-width: 768px) {
+  .nav-links {
+    position: fixed;
+    top: 80px;
+    left: 0;
+    right: 0;
+    background: #fff;
+    flex-direction: column;
+    align-items: center;
+    padding: 20px 0;
+    box-shadow: 0 10px 10px rgba(0,0,0,0.1);
+    display: none; /* escondido por padrão */
+    z-index: 1000;
+  }
+
+  .nav-links.active {
+    display: flex;
+  }
+
+  .hamburger {
+    display: flex;
+  }
+
+  /* Animação do hambúrguer ao abrir */
+  .hamburger.active span:nth-child(1) {
+    transform: rotate(-45deg) translate(-5px, 6px);
+  }
+  .hamburger.active span:nth-child(2) {
+    opacity: 0;
+  }
+  .hamburger.active span:nth-child(3) {
+    transform: rotate(45deg) translate(-5px, -6px);
+  }
+}
+        .logo {
+  display: flex;
+  align-items: center;
+  gap: 8px; /* espaço entre a imagem e o texto */
+}
+
+.logo img {
+  height: 62px; /* ajuste conforme necessário */
+  width: auto;
+}
+
+/* Estilo para a seção de sócios */
+.partners-section {
+  padding: 80px 40px;
+  background: #f8f9fa;
+}
+
+.partners-container {
+  max-width: 1200px;
+  margin: 0 auto;
+  text-align: center;
+}
+
+.partners-container h3 {
+  color: #1e3a5f;
+  margin-bottom: 40px;
+  font-size: 28px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+}
+
+.partners-grid {
+  display: flex;
+  justify-content: center;
+  gap: 40px;
+  flex-wrap: wrap;
+}
+
+.partner-card {
+  display: flex;
+  align-items: center;
+  background: #fff;
+  padding: 20px;
+  border-radius: 12px;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.08);
+  max-width: 500px;
+  width: 100%;
+}
+
+.partner-avatar {
+  width: 100px;
+  height: 100px;
+  border-radius: 50%;
+  overflow: hidden;
+  margin-right: 20px;
+  flex-shrink: 0;
+}
+
+.partner-avatar img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+
+.partner-info {
+  text-align: left;
+}
+
+.partner-info h4 {
+  color: #1e3a5f;
+  margin-bottom: 5px;
+  font-size: 20px;
+}
+
+.role {
+  color: #e63946;
+  font-weight: 600;
+  margin: 8px 0;
+}
+
+.percentage {
+  color: #666;
+  font-size: 14px;
+  display: block;
+  margin-top: 8px;
+}
+
+/* Responsivo */
+@media (max-width: 768px) {
+  .partner-card {
+    flex-direction: column;
+    text-align: center;
+  }
+
+  .partner-avatar {
+    margin-right: 0;
+    margin-bottom: 15px;
+  }
+
+  .partner-info {
+    text-align: center;
+  }
+}
+    </style>
+</head>
+<body>
+    <header id="header">
+    <nav>
+        <div class="logo">
+        <a href="index.html"> 
+            <img src="img/photo_2025-10-25_10-47-33.jpg" alt="Logo CIDHS">
+        </a>
+        </div>
+
+        <!-- Botão hambúrguer (só aparece em mobile) -->
+        <button class="hamburger" aria-label="Alternar menu">
+        <span></span>
+        <span></span>
+        <span></span>
+        </button>
+
+        <!-- Links de navegação -->
+        <ul class="nav-links" id="navLinks">
+        <li><a href="sobrenos.html"><i class="fas fa-info-circle"></i> Sobre</a></li>
+        <li><a href="servicos.html"><i class="fas fa-briefcase"></i> Serviços</a></li>
+        <li><a href="#equipa"><i class="fas fa-users"></i> Equipa</a></li>
+        <li><a href="#contato"><i class="fas fa-envelope"></i> Contato</a></li>
+        </ul>
+    </nav>
+    </header>
+
+    <section class="page-hero">
+        <h1><i class="fas fa-building"></i> Sobre a CIDHS</h1>
+        <p>Consultoria Interdisciplinar em Desenvolvimento Humano e Social</p>
+    </section>
+
+    <section class="content-section fade-in">
+        <h2 class="section-title">
+            <i class="fas fa-info-circle"></i>
+            Quem Somos
+        </h2>
+        <p class="intro-text">
+            A <strong>CIDHS – Consultoria Interdisciplinar em Desenvolvimento Humano e Social, Lda.</strong> é uma sociedade 
+            por quotas moçambicana, constituída por dois sócios com vasta experiência em desenvolvimento humano, investigação 
+            científica e políticas públicas. Sediada em Quelimane, Zambézia, a CIDHS dedica-se a oferecer soluções inovadoras 
+            e baseadas em evidências para transformar realidades sociais e promover o desenvolvimento sustentável.
+        </p>
+
+        <div class="info-grid">
+            <div class="info-card">
+                <div class="info-card-icon">
+                    <i class="fas fa-map-marker-alt"></i>
+                </div>
+                <h3>Sede</h3>
+                <p>Cidade de Quelimane, com possibilidade de estabelecer filiais, sucursais ou escritórios de representação dentro ou fora do país.</p>
+            </div>
+
+            <div class="info-card">
+                <div class="info-card-icon">
+                    <i class="fas fa-gavel"></i>
+                </div>
+                <h3>Natureza Jurídica</h3>
+                <p>Sociedade por Quotas regida pelo Código Comercial de Moçambique e legislações aplicáveis.</p>
+            </div>
+
+            <div class="info-card">
+                <div class="info-card-icon">
+                    <i class="fas fa-infinity"></i>
+                </div>
+                <h3>Duração</h3>
+                <p>Constituída por tempo indeterminado, com actividades iniciadas a partir da data de registo oficial.</p>
+            </div>
+        </div>
+    </section>
+
+    <section class="revenue-section">
+        <div class="revenue-container">
+            <h3><i class="fas fa-chart-line"></i> Fontes de Receita</h3>
+            <div class="revenue-grid">
+                <div class="revenue-item">
+                    <i class="fas fa-handshake"></i>
+                    <h4>Consultoria Estratégica</h4>
+                    <p>Serviços especializados para governos, empresas e ONGs</p>
+                </div>
+
+                <div class="revenue-item">
+                    <i class="fas fa-search"></i>
+                    <h4>Pesquisas e Diagnósticos</h4>
+                    <p>Investigação aplicada e análise institucional</p>
+                </div>
+
+                <div class="revenue-item">
+                    <i class="fas fa-chalkboard-teacher"></i>
+                    <h4>Cursos e Capacitações</h4>
+                    <p>Treinamentos de curta duração especializados</p>
+                </div>
+
+                <div class="revenue-item">
+                    <i class="fas fa-users"></i>
+                    <h4>Parcerias Estratégicas</h4>
+                    <p>Colaborações e financiamento de projectos</p>
+                </div>
+
+                <div class="revenue-item">
+                    <i class="fas fa-hand-holding-heart"></i>
+                    <h4>Doações</h4>
+                    <p>Apoio de parceiros e organizações internacionais</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="content-section fade-in">
+        <div class="org-structure">
+            <h3><i class="fas fa-sitemap"></i> Estrutura Organizacional</h3>
+            <div class="org-chart">
+                <div class="org-level">
+                    <h4><i class="fas fa-crown"></i> Conselho de Direcção</h4>
+                    <p style="color: #666; margin-bottom: 15px;">Órgão máximo de decisão composto pelos sócios</p>
+                    <ul>
+                        <li>Aprovar as contas anuais e relatórios de actividades</li>
+                        <li>Nomear e destituir gerentes</li>
+                        <li>Alterar o contrato social</li>
+                        <li>Deliberar sobre a dissolução da sociedade</li>
+                    </ul>
+                </div>
+
+                <div class="org-level">
+                    <h4><i class="fas fa-user-tie"></i> Gerência</h4>
+                    <p style="color: #666; margin-bottom: 15px;">Responsável pela administração e gestão da sociedade</p>
+                    <ul>
+                        <li>Representar a sociedade perante terceiros</li>
+                        <li>Celebrar contratos e parcerias</li>
+                        <li>Tomar decisões estratégicas</li>
+                        <li>Gerir operações diárias</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+
+<section class="partners-section fade-in">
+  <div class="partners-container">
+    <h3><i class="fas fa-users"></i> Sócios Fundadores</h3>
+    <div class="partners-grid">
+      <div class="partner-card">
+        <div class="partner-avatar">
+          <img src="img/photo_2025-10-25_22-22-05.jpg"lt="Aniceto Mapfala">
+        </div>
+        <div class="partner-info">
+          <h4>Aniceto Mapfala PhD</h4>
+          <p class="role">Sócio-Gerente</p>
+          <span class="percentage">50% do Capital Social</span>
+        </div>
+      </div>
+
+      <div class="partner-card">
+        <div class="partner-avatar">
+          <img src="img/photo_2025-10-25_22-21-59.jpg"lt="Ruben Ulaia">
+        </div>
+        <div class="partner-info">
+          <h4>Ruben Ulaia MSc</h4>
+          <p class="role">Sócio-Gerente</p>
+          <span class="percentage">50% do Capital Social</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+    <section class="legal-section fade-in">
+        <div class="legal-container">
+            <h3><i class="fas fa-balance-scale"></i> Informações Legais</h3>
+
+            <div class="legal-item">
+                <h4><i class="fas fa-briefcase"></i> Objecto Social</h4>
+                <p>A CIDHS tem como objecto social a prestação de serviços de consultoria nas seguintes áreas:</p>
+                <ul>
+                    <li>Educação e Desenvolvimento Humano</li>
+                    <li>Governação e Políticas Públicas</li>
+                    <li>Género, Direitos Sexuais e Reprodutivos</li>
+                    <li>Empoderamento Económico e Direitos Humanos</li>
+                </ul>
+            </div>
+
+            <div class="legal-item">
+                <h4><i class="fas fa-coins"></i> Capital Social</h4>
+                <p>O capital social é dividido igualmente entre os dois sócios fundadores, cada um detendo 50% das quotas nominativas da sociedade.</p>
+            </div>
+
+            <div class="legal-item">
+                <h4><i class="fas fa-exchange-alt"></i> Transmissão de Quotas</h4>
+                <ul>
+                    <li>A transmissão de quotas entre sócios pode ser feita livremente mediante registo formal</li>
+                    <li>A transmissão de quotas a terceiros está sujeita ao direito de preferência dos sócios remanescentes</li>
+                </ul>
+            </div>
+
+            <div class="legal-item">
+                <h4><i class="fas fa-chart-pie"></i> Distribuição de Resultados</h4>
+                <p>Os lucros líquidos, após dedução das reservas legais e fiscais, serão distribuídos proporcionalmente à participação dos sócios. O Conselho de Direcção pode decidir pela retenção parcial dos lucros para reinvestimento.</p>
+            </div>
+        </div>
+    </section>
+
+    <footer>
+        <div class="footer-content">
+            <div class="footer-section">
+                <h4>
+                    <i class="fas fa-leaf"></i>
+                    CIDHS
+                </h4>
+                <p style="color: rgba(255,255,255,0.7); line-height: 1.6;">
+                    Consultoria Interdisciplinar em Desenvolvimento Humano e Social - Ciência ao serviço do desenvolvimento.
+                </p>
+            </div>
+
+            <div class="footer-section">
+                <h4>
+                    <i class="fas fa-map-marker-alt"></i>
+                    Localização
+                </h4>
+                <p style="color: rgba(255,255,255,0.7);">
+                    Av. Julius Nyerere, Bairro Sinacura<br>
+                    Quelimane, Zambézia<br>
+                    Moçambique
+                </p>
+            </div>
+
+            <div class="footer-section">
+                <h4>
+                    <i class="fas fa-phone"></i>
+                    Contactos
+                </h4>
+                <ul>
+                    <li><a href="tel:+258846205197"><i class="fas fa-phone-alt"></i> +258 84 620 5197</a></li>
+                    <li><a href="tel:+258844142374"><i class="fas fa-phone-alt"></i> +258 84 414 2374</a></li>
+                    <li><a href="mailto:cidhs@cidhs.org"><i class="fas fa-envelope"></i> cidhs@cidhs.org</a></li>
+                </ul>
+            </div>
+
+            <div class="footer-section">
+                <h4>
+                    <i class="fas fa-link"></i>
+                    Links Rápidos
+                </h4>
+                <ul>
+                    <li><a href="index.html"><i class="fas fa-chevron-right"></i> Início</a></li>
+                    <li><a href="sobre.html"><i class="fas fa-chevron-right"></i> Sobre Nós</a></li>
+                    <li><a href="servicos.html"><i class="fas fa-chevron-right"></i> Serviços</a></li>
+                    <li><a href="#"><i class="fas fa-chevron-right"></i> Equipa</a></li>
+                </ul>
+            </div>
+        </div>
+
+        <div class="footer-bottom">
+            <p>Copyright © 2025 Todos os direitos reservados | CIDHS - Consultoria Interdisciplinar em Desenvolvimento Humano e Social, Lda.</p>
+        </div>
+    </footer>
+
+    <script>
+        // Smooth scroll
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({
+                        behavior: 'smooth',
+                        block: 'start'
+                    });
+                }
+            });
+        });
+
+        // Fade in on scroll
+        const observerOptions = {
+            threshold: 0.1,
+            rootMargin: '0px 0px -100px 0px'
+        };
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('visible');
+                }
+            });
+        }, observerOptions);
+
+        document.querySelectorAll('.fade-in').forEach(el => {
+            observer.observe(el);
+        });
+
+        // Animate cards on scroll
+        const cardObserver = new IntersectionObserver((entries) => {
+            entries.forEach((entry, index) => {
+                if (entry.isIntersecting) {
+                    setTimeout(() => {
+                        entry.target.style.opacity = '1';
+                        entry.target.style.transform = 'translateY(0)';
+                    }, index * 100);
+                }
+            });
+        }, { threshold: 0.2 });
+
+        document.querySelectorAll('.info-card, .revenue-item, .partner-card').forEach(card => {
+            card.style.opacity = '0';
+            card.style.transform = 'translateY(20px)';
+            card.style.transition = 'all 0.6s ease';
+            cardObserver.observe(card);
+        });
+
+        // Header scroll effect
+        window.addEventListener('scroll', () => {
+            const header = document.querySelector('header');
+            if (window.scrollY > 100) {
+                header.style.boxShadow = '0 4px 20px rgba(0,0,0,0.15)';
+            } else {
+                header.style.boxShadow = '0 2px 10px rgba(0,0,0,0.1)';
+            }
+        });
+    </script>
+     <script>
+  // Toggle menu hambúrguer
+  const hamburger = document.querySelector('.hamburger');
+  const navLinks = document.getElementById('navLinks');
+
+  hamburger.addEventListener('click', () => {
+    navLinks.classList.toggle('active');
+    hamburger.classList.toggle('active');
+  });
+
+  // Fechar menu ao clicar em um link (mobile)
+  document.querySelectorAll('.nav-links a').forEach(link => {
+    link.addEventListener('click', () => {
+      navLinks.classList.remove('active');
+      hamburger.classList.remove('active');
+    });
+  });
+</script>
+</body>
+</html>

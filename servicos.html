@@ -1,0 +1,975 @@
+<!DOCTYPE html>
+<html lang="pt">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CIDHS - Nossos Serviços</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            color: #1a1a1a;
+            overflow-x: hidden;
+        }
+
+        /* Header & Navigation */
+        header {
+            position: fixed;
+            top: 0;
+            width: 100%;
+            background: #fff;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+            z-index: 1000;
+        }
+
+        nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 20px 40px;
+        }
+
+        .logo {
+            font-size: 32px;
+            font-weight: bold;
+            color: #e63946;
+            letter-spacing: 2px;
+        }
+
+        .nav-links {
+            display: flex;
+            list-style: none;
+            gap: 40px;
+        }
+
+        .nav-links a {
+            text-decoration: none;
+            color: #333;
+            font-weight: 500;
+            transition: color 0.3s;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .nav-links a:hover {
+            color: #e63946;
+        }
+
+        /* Hero Banner */
+        .page-hero {
+            background: linear-gradient(135deg, #1e3a5f 0%, #2d5a7b 100%);
+            padding: 150px 40px 80px;
+            text-align: center;
+            color: #fff;
+        }
+
+        .page-hero h1 {
+            font-size: 56px;
+            margin-bottom: 20px;
+            animation: fadeInUp 0.8s;
+        }
+
+        .page-hero p {
+            font-size: 20px;
+            max-width: 800px;
+            margin: 0 auto;
+            opacity: 0.9;
+            animation: fadeInUp 1s;
+        }
+
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        /* Service Section */
+        .service-section {
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 80px 40px;
+        }
+
+        .service-header {
+            display: flex;
+            align-items: flex-start;
+            gap: 40px;
+            margin-bottom: 60px;
+            padding-bottom: 40px;
+            border-bottom: 3px solid #e63946;
+        }
+
+        .service-icon-large {
+            width: 100px;
+            height: 100px;
+            background: linear-gradient(135deg, #e63946, #c62a35);
+            border-radius: 20px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 48px;
+            color: #fff;
+            flex-shrink: 0;
+            box-shadow: 0 10px 30px rgba(230, 57, 70, 0.3);
+        }
+
+        .service-title-area {
+            flex: 1;
+        }
+
+        .service-title-area h2 {
+            font-size: 42px;
+            color: #1e3a5f;
+            margin-bottom: 20px;
+        }
+
+        .service-title-area p {
+            font-size: 18px;
+            color: #666;
+            line-height: 1.8;
+        }
+
+        /* Objectives */
+        .objectives {
+            background: #f8f9fa;
+            padding: 40px;
+            border-radius: 15px;
+            margin-bottom: 50px;
+        }
+
+        .objectives h3 {
+            font-size: 28px;
+            color: #1e3a5f;
+            margin-bottom: 30px;
+            display: flex;
+            align-items: center;
+            gap: 15px;
+        }
+
+        .objectives h3 i {
+            color: #e63946;
+        }
+
+        .objective-list {
+            display: grid;
+            gap: 20px;
+        }
+
+        .objective-item {
+            background: #fff;
+            padding: 25px;
+            border-radius: 10px;
+            border-left: 4px solid #e63946;
+            transition: all 0.3s;
+        }
+
+        .objective-item:hover {
+            transform: translateX(10px);
+            box-shadow: 0 5px 20px rgba(0,0,0,0.1);
+        }
+
+        .objective-item i {
+            color: #e63946;
+            margin-right: 10px;
+        }
+
+        /* Services Offered */
+        .services-offered {
+            margin-bottom: 50px;
+        }
+
+        .services-offered h3 {
+            font-size: 28px;
+            color: #1e3a5f;
+            margin-bottom: 30px;
+            display: flex;
+            align-items: center;
+            gap: 15px;
+        }
+
+        .services-offered h3 i {
+            color: #e63946;
+        }
+
+        .service-category {
+            background: #fff;
+            padding: 30px;
+            border-radius: 15px;
+            margin-bottom: 30px;
+            box-shadow: 0 5px 20px rgba(0,0,0,0.08);
+            transition: all 0.3s;
+        }
+
+        .service-category:hover {
+            box-shadow: 0 10px 40px rgba(0,0,0,0.15);
+            transform: translateY(-5px);
+        }
+
+        .service-category h4 {
+            font-size: 22px;
+            color: #1e3a5f;
+            margin-bottom: 20px;
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+
+        .service-category h4 i {
+            width: 40px;
+            height: 40px;
+            background: #e63946;
+            border-radius: 8px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: #fff;
+            font-size: 20px;
+        }
+
+        .service-list {
+            list-style: none;
+        }
+
+        .service-list li {
+            padding: 12px 0;
+            padding-left: 30px;
+            position: relative;
+            color: #555;
+            line-height: 1.6;
+        }
+
+        .service-list li:before {
+            content: '\f00c';
+            font-family: 'Font Awesome 6 Free';
+            font-weight: 900;
+            position: absolute;
+            left: 0;
+            color: #e63946;
+        }
+
+        .sub-list {
+            margin-left: 20px;
+            margin-top: 10px;
+        }
+
+        .sub-list li:before {
+            content: '\f105';
+        }
+
+        /* Alternating backgrounds */
+        .service-section:nth-child(even) {
+            background: #f8f9fa;
+        }
+
+        /* CTA Section */
+        .cta-section {
+            background: linear-gradient(135deg, #1e3a5f 0%, #2d5a7b 100%);
+            color: #fff;
+            padding: 80px 40px;
+            text-align: center;
+        }
+
+        .cta-section h2 {
+            font-size: 42px;
+            margin-bottom: 20px;
+        }
+
+        .cta-section p {
+            font-size: 20px;
+            margin-bottom: 40px;
+            opacity: 0.9;
+        }
+
+        .cta-buttons {
+            display: flex;
+            gap: 20px;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+
+        .cta-button {
+            padding: 18px 40px;
+            background: #e63946;
+            color: #fff;
+            text-decoration: none;
+            border-radius: 5px;
+            font-weight: 600;
+            transition: all 0.3s;
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .cta-button:hover {
+            background: #c62a35;
+            transform: translateY(-3px);
+            box-shadow: 0 10px 25px rgba(230,57,70,0.3);
+        }
+
+        .cta-button.secondary {
+            background: transparent;
+            border: 2px solid #fff;
+        }
+
+        .cta-button.secondary:hover {
+            background: #fff;
+            color: #1e3a5f;
+        }
+
+        /* Footer */
+        footer {
+            background: #0a1929;
+            color: #fff;
+            padding: 60px 40px 30px;
+        }
+
+        .footer-content {
+            max-width: 1400px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 40px;
+            margin-bottom: 40px;
+        }
+
+        .footer-section h4 {
+            color: #e63946;
+            margin-bottom: 20px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .footer-section ul {
+            list-style: none;
+        }
+
+        .footer-section ul li {
+            margin-bottom: 10px;
+        }
+
+        .footer-section a {
+            color: rgba(255,255,255,0.7);
+            text-decoration: none;
+            transition: color 0.3s;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .footer-section a:hover {
+            color: #e63946;
+        }
+
+        .footer-bottom {
+            text-align: center;
+            padding-top: 30px;
+            border-top: 1px solid rgba(255,255,255,0.1);
+            color: rgba(255,255,255,0.6);
+        }
+
+        /* Animations */
+        .fade-in {
+            opacity: 0;
+            transform: translateY(30px);
+            transition: all 0.8s;
+        }
+
+        .fade-in.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .page-hero h1 {
+                font-size: 36px;
+            }
+
+            .service-header {
+                flex-direction: column;
+            }
+
+            .service-icon-large {
+                width: 80px;
+                height: 80px;
+                font-size: 36px;
+            }
+
+            .service-title-area h2 {
+                font-size: 32px;
+            }
+
+            .nav-links {
+                display: none;
+            }
+
+            .cta-buttons {
+                flex-direction: column;
+                align-items: center;
+            }
+        }
+
+/* Estilo do botão hambúrguer */
+.hamburger {
+  display: none;
+  flex-direction: column;
+  background: none;
+  border: none;
+  cursor: pointer;
+  padding: 5px;
+  z-index: 1001;
+}
+
+.hamburger span {
+  width: 25px;
+  height: 3px;
+  background: #333;
+  margin: 3px 0;
+  transition: 0.3s;
+  border-radius: 2px;
+}
+
+/* Menu mobile */
+@media (max-width: 768px) {
+  .nav-links {
+    position: fixed;
+    top: 80px;
+    left: 0;
+    right: 0;
+    background: #fff;
+    flex-direction: column;
+    align-items: center;
+    padding: 20px 0;
+    box-shadow: 0 10px 10px rgba(0,0,0,0.1);
+    display: none; /* escondido por padrão */
+    z-index: 1000;
+  }
+
+  .nav-links.active {
+    display: flex;
+  }
+
+  .hamburger {
+    display: flex;
+  }
+
+  /* Animação do hambúrguer ao abrir */
+  .hamburger.active span:nth-child(1) {
+    transform: rotate(-45deg) translate(-5px, 6px);
+  }
+  .hamburger.active span:nth-child(2) {
+    opacity: 0;
+  }
+  .hamburger.active span:nth-child(3) {
+    transform: rotate(45deg) translate(-5px, -6px);
+  }
+}
+        .logo {
+  display: flex;
+  align-items: center;
+  gap: 8px; /* espaço entre a imagem e o texto */
+}
+
+.logo img {
+  height: 62px; /* ajuste conforme necessário */
+  width: auto;
+}
+    </style>
+</head>
+<body>
+<header id="header">
+  <nav>
+            <div class="logo">
+            <a href="index.html"> <!-- substitua pelo link desejado -->
+                <img src="img/photo_2025-10-25_10-47-33.jpg" alt="Logo CIDHS">
+            </a>
+            </div>
+
+    <!-- Botão hambúrguer (só aparece em mobile) -->
+    <button class="hamburger" aria-label="Alternar menu">
+      <span></span>
+      <span></span>
+      <span></span>
+    </button>
+
+    <!-- Links de navegação -->
+    <ul class="nav-links" id="navLinks">
+      <li><a href="sobrenos.html"><i class="fas fa-info-circle"></i> Sobre</a></li>
+      <li><a href="servicos.html"><i class="fas fa-briefcase"></i> Serviços</a></li>
+      <li><a href="#equipa"><i class="fas fa-users"></i> Equipa</a></li>
+      <li><a href="#contato"><i class="fas fa-envelope"></i> Contato</a></li>
+    </ul>
+  </nav>
+</header>
+
+    <section class="page-hero">
+        <h1><i class="fas fa-cogs"></i> Nossos Serviços</h1>
+        <p>Soluções especializadas e interdisciplinares para o desenvolvimento humano e social sustentável</p>
+    </section>
+
+    <!-- Educação e Desenvolvimento Humano -->
+    <section class="service-section fade-in">
+        <div class="service-header">
+            <div class="service-icon-large">
+                <i class="fas fa-graduation-cap"></i>
+            </div>
+            <div class="service-title-area">
+                <h2>Educação e Desenvolvimento Humano</h2>
+                <p>A educação e o desenvolvimento humano são essenciais para a construção de sociedades mais equitativas e sustentáveis. O acesso limitado à educação de qualidade agrava as desigualdades sociais e económicas, enquanto políticas educativas bem estruturadas promovem inclusão, cidadania ativa e crescimento sustentável, impulsionando o progresso social e institucional.</p>
+            </div>
+        </div>
+
+        <div class="objectives">
+            <h3><i class="fas fa-bullseye"></i> Objectivos Específicos</h3>
+            <div class="objective-list">
+                <div class="objective-item">
+                    <i class="fas fa-check-circle"></i>
+                    Através da pesquisa científica, sugerir políticas educacionais inovadoras que incentivem a inclusão e a equidade, garantindo a permanência das crianças na escola e combatendo o abandono escolar.
+                </div>
+                <div class="objective-item">
+                    <i class="fas fa-check-circle"></i>
+                    Fortalecer instituições públicas e privadas através da capacitação de gestores educacionais, promovendo boas práticas na administração escolar e no desenvolvimento de políticas educativas inclusivas.
+                </div>
+                <div class="objective-item">
+                    <i class="fas fa-check-circle"></i>
+                    Promover a educação da rapariga como prioridade nos modelos educacionais, especialmente nas zonas rurais, para reduzir disparidades de género no acesso à educação.
+                </div>
+                <div class="objective-item">
+                    <i class="fas fa-check-circle"></i>
+                    Assessorar governos e ONGs na formulação e implementação de políticas públicas educacionais, focadas no desenvolvimento humano e na melhoria da qualidade do ensino.
+                </div>
+                <div class="objective-item">
+                    <i class="fas fa-check-circle"></i>
+                    Monitorizar e avaliar políticas educativas, identificando desafios e propondo reformas estruturais para melhorar a gestão do ensino e os resultados de aprendizagem.
+                </div>
+            </div>
+        </div>
+
+        <div class="services-offered">
+            <h3><i class="fas fa-clipboard-list"></i> Principais Serviços Oferecidos</h3>
+            
+            <div class="service-category">
+                <h4><i class="fas fa-search"></i> Pesquisa e Investigação</h4>
+                <ul class="service-list">
+                    <li>Análise do impacto de políticas educacionais no desenvolvimento local e nacional</li>
+                    <li>Estudos sobre educação, cidadania e inclusão social</li>
+                    <li>Levantamento de dados sobre a eficácia de programas educacionais, com recomendações para melhoria</li>
+                    <li>Estudos e diagnósticos sobre acesso à educação em zonas rurais e desafios enfrentados pelas raparigas no ensino</li>
+                </ul>
+            </div>
+
+            <div class="service-category">
+                <h4><i class="fas fa-project-diagram"></i> Criação e Monitoria de Projectos Educacionais</h4>
+                <ul class="service-list">
+                    <li>Desenvolvimento e implementação de programas de inclusão escolar e educação para a cidadania</li>
+                    <li>Monitoria de projectos educacionais para garantir impacto a longo prazo</li>
+                </ul>
+            </div>
+
+            <div class="service-category">
+                <h4><i class="fas fa-chalkboard-teacher"></i> Capacitação e Formação</h4>
+                <ul class="service-list">
+                    <li>Cursos e treinamentos de curta duração sobre gestão educacional, inovação pedagógica e administração escolar</li>
+                    <li>Capacitação de professores e gestores para aplicação de práticas inclusivas e metodologias activas de ensino</li>
+                </ul>
+            </div>
+        </div>
+    </section>
+
+    <!-- Governação e Políticas Públicas -->
+    <section class="service-section fade-in">
+        <div class="service-header">
+            <div class="service-icon-large">
+                <i class="fas fa-landmark"></i>
+            </div>
+            <div class="service-title-area">
+                <h2>Governação e Políticas Públicas</h2>
+                <p>A governação democrática e a formulação de políticas públicas adequadas são essenciais para garantir a gestão transparente, a participação do cidadão e a inclusão social. O fortalecimento das instituições públicas e privadas contribui para sociedades mais justas e equitativas, promovendo o desenvolvimento humano e social.</p>
+            </div>
+        </div>
+
+        <div class="objectives">
+            <h3><i class="fas fa-bullseye"></i> Objectivos Específicos</h3>
+            <div class="objective-list">
+                <div class="objective-item">
+                    <i class="fas fa-check-circle"></i>
+                    Reforçar a capacidade institucional por meio de capacitação em governação democrática, transparência e participação do cidadão.
+                </div>
+                <div class="objective-item">
+                    <i class="fas fa-check-circle"></i>
+                    Desenvolver políticas públicas inclusivas, garantindo que as decisões governamentais sejam específicas, transparentes e baseadas em evidências.
+                </div>
+                <div class="objective-item">
+                    <i class="fas fa-check-circle"></i>
+                    Monitorizar e avaliar as políticas existentes, propondo reformas estruturais para melhorar a governação e a prestação de serviços públicos.
+                </div>
+                <div class="objective-item">
+                    <i class="fas fa-check-circle"></i>
+                    Apoiar a descentralização e o fortalecimento da governação local, promovendo mecanismos participativos que aumentem a inclusão das comunidades nas decisões políticas.
+                </div>
+                <div class="objective-item">
+                    <i class="fas fa-check-circle"></i>
+                    Incentivar a participação cívica e os direitos humanos, promovendo a democracia, a equidade e a justiça social.
+                </div>
+            </div>
+        </div>
+
+        <div class="services-offered">
+            <h3><i class="fas fa-clipboard-list"></i> Principais Serviços Oferecidos</h3>
+            
+            <div class="service-category">
+                <h4><i class="fas fa-search"></i> Pesquisa e Investigação</h4>
+                <ul class="service-list">
+                    <li>Estudos sobre desafios na implementação de políticas públicas e eficiência governativa</li>
+                    <li>Análise do impacto da descentralização e da participação cidadã no desenvolvimento social</li>
+                    <li>Investigação sobre transparência, prestação de contas e combate à corrupção</li>
+                </ul>
+            </div>
+
+            <div class="service-category">
+                <h4><i class="fas fa-user-graduate"></i> Capacitação e Formação</h4>
+                <ul class="service-list">
+                    <li>Cursos e treinamentos de curta duração sobre governação democrática, transparência e participação cívica</li>
+                    <li>Formação para actores políticos e instituições democráticas sobre gestão pública eficaz</li>
+                    <li>Capacitação de líderes comunitários para engajamento em processos políticos e sociais</li>
+                </ul>
+            </div>
+        </div>
+    </section>
+
+    <!-- Género, Direitos Sexuais e Reprodutivos -->
+    <section class="service-section fade-in">
+        <div class="service-header">
+            <div class="service-icon-large">
+                <i class="fas fa-venus-mars"></i>
+            </div>
+            <div class="service-title-area">
+                <h2>Género, Direitos Sexuais e Reprodutivos</h2>
+                <p>A igualdade de género e o respeito pelos direitos sexuais e reprodutivos são fundamentais para a construção de uma sociedade mais justa e equitativa. O acesso a direitos reprodutivos, educação sexual e saúde de qualidade é essencial para o desenvolvimento humano e social, permitindo que indivíduos, especialmente mulheres e raparigas, tomem decisões informadas sobre os seus corpos e futuros.</p>
+            </div>
+        </div>
+
+        <div class="objectives">
+            <h3><i class="fas fa-bullseye"></i> Objectivos Específicos</h3>
+            <div class="objective-list">
+                <div class="objective-item">
+                    <i class="fas fa-check-circle"></i>
+                    Promover a igualdade de género em todas as esferas da sociedade, garantindo equidade no acesso a oportunidades e recursos.
+                </div>
+                <div class="objective-item">
+                    <i class="fas fa-check-circle"></i>
+                    Assegurar o acesso universal à saúde sexual e reprodutiva, combatendo tabus e barreiras que limitam os direitos das mulheres e raparigas.
+                </div>
+                <div class="objective-item">
+                    <i class="fas fa-check-circle"></i>
+                    Capacitar comunidades, profissionais de saúde e educadores para melhorar o conhecimento e acesso a serviços de saúde sexual e reprodutiva.
+                </div>
+                <div class="objective-item">
+                    <i class="fas fa-check-circle"></i>
+                    Fortalecer políticas e leis de protecção contra a violência baseada no género, assegurando o cumprimento dos direitos humanos.
+                </div>
+                <div class="objective-item">
+                    <i class="fas fa-check-circle"></i>
+                    Promover a educação sexual baseada em direitos humanos, garantindo que jovens e adultos possam tomar decisões informadas e responsáveis.
+                </div>
+            </div>
+        </div>
+
+        <div class="services-offered">
+            <h3><i class="fas fa-clipboard-list"></i> Principais Serviços Oferecidos</h3>
+            
+            <div class="service-category">
+                <h4><i class="fas fa-search"></i> Pesquisa e Investigação</h4>
+                <ul class="service-list">
+                    <li>Estudos sobre barreiras no acesso à saúde sexual e reprodutiva e desigualdade de género</li>
+                    <li>Análises sobre o impacto das políticas de igualdade de género e protecção dos direitos das mulheres</li>
+                    <li>Investigação sobre violência baseada no género e eficácia das políticas de combate</li>
+                </ul>
+            </div>
+
+            <div class="service-category">
+                <h4><i class="fas fa-user-graduate"></i> Capacitação e Formação</h4>
+                <ul class="service-list">
+                    <li>Cursos e treinamentos de curta duração sobre igualdade de género, liderança feminina e empoderamento das raparigas</li>
+                </ul>
+            </div>
+
+            <div class="service-category">
+                <h4><i class="fas fa-hands-helping"></i> Consultoria e Apoio Institucional</h4>
+                <ul class="service-list">
+                    <li>Desenvolvimento de políticas públicas de igualdade de género e protecção dos direitos reprodutivos</li>
+                    <li>Apoio a instituições governamentais e ONGs na implementação de programas de saúde sexual e reprodutiva</li>
+                </ul>
+            </div>
+
+            <div class="service-category">
+                <h4><i class="fas fa-project-diagram"></i> Projectos e Redes de Apoio</h4>
+                <ul class="service-list">
+                    <li>Criação e monitorização de projectos para prevenir a violência baseada no género e fortalecer o acesso a direitos</li>
+                    <li>Promoção de redes de apoio e aconselhamento para vítimas de violência de género e abuso sexual</li>
+                </ul>
+            </div>
+        </div>
+    </section>
+
+    <!-- Empoderamento Económico e Direitos Humanos -->
+    <section class="service-section fade-in">
+        <div class="service-header">
+            <div class="service-icon-large">
+                <i class="fas fa-hand-holding-usd"></i>
+            </div>
+            <div class="service-title-area">
+                <h2>Empoderamento Económico e Direitos Humanos</h2>
+                <p>O empoderamento económico é um dos principais motores para a redução da pobreza, a promoção da inclusão social e o fortalecimento da justiça económica. O acesso a oportunidades económicas, formação profissional e empreendedorismo sustentável são essenciais para garantir a autonomia financeira e a melhoria das condições de vida, principalmente de jovens e mulheres.</p>
+            </div>
+        </div>
+
+        <div class="objectives">
+            <h3><i class="fas fa-bullseye"></i> Objectivos Específicos</h3>
+            <div class="objective-list">
+                <div class="objective-item">
+                    <i class="fas fa-check-circle"></i>
+                    Promover o empreendedorismo e o acesso a oportunidades económicas para grupos vulneráveis, especialmente jovens e mulheres.
+                </div>
+                <div class="objective-item">
+                    <i class="fas fa-check-circle"></i>
+                    Apoiar a criação de negócios sustentáveis e inovação social, impulsionando iniciativas de desenvolvimento económico inclusivo.
+                </div>
+                <div class="objective-item">
+                    <i class="fas fa-check-circle"></i>
+                    Desenvolver políticas e programas que incentivem a inclusão económica, garantindo trabalho digno e redução das desigualdades salariais.
+                </div>
+                <div class="objective-item">
+                    <i class="fas fa-check-circle"></i>
+                    Combater a exploração laboral e garantir o cumprimento dos direitos humanos no ambiente de trabalho.
+                </div>
+                <div class="objective-item">
+                    <i class="fas fa-check-circle"></i>
+                    Apoiar políticas públicas voltadas para a protecção social e justiça económica, promovendo equidade de género e inclusão social.
+                </div>
+            </div>
+        </div>
+
+        <div class="services-offered">
+            <h3><i class="fas fa-clipboard-list"></i> Principais Serviços Oferecidos</h3>
+            
+            <div class="service-category">
+                <h4><i class="fas fa-search"></i> Pesquisa e Investigação</h4>
+                <ul class="service-list">
+                    <li>Estudos sobre desigualdades económicas, acesso ao mercado de trabalho e mobilidade social</li>
+                    <li>Investigação sobre impacto de políticas de inclusão económica e programas de empreendedorismo</li>
+                    <li>Análises sobre trabalho digno, equidade salarial e protecção social</li>
+                </ul>
+            </div>
+
+            <div class="service-category">
+                <h4><i class="fas fa-user-graduate"></i> Formação e Capacitação</h4>
+                <ul class="service-list">
+                    <li>Programas de formação profissional e capacitação para jovens e mulheres</li>
+                    <li>Treinamentos sobre empreendedorismo sustentável, inovação social e gestão de negócios</li>
+                    <li>Formação em direitos laborais e inclusão económica para empresas e trabalhadores</li>
+                </ul>
+            </div>
+
+            <div class="service-category">
+                <h4><i class="fas fa-hands-helping"></i> Consultoria e Monitoria</h4>
+                <ul class="service-list">
+                    <li>Consultoria para governos e empresas na adopção de boas práticas para a inclusão económica e responsabilidade social</li>
+                    <li>Monitorização e avaliação de programas de empoderamento económico, garantindo impacto e sustentabilidade</li>
+                </ul>
+            </div>
+        </div>
+    </section>
+
+    <!-- CTA Section -->
+    <section class="cta-section">
+        <h2>Pronto para Transformar o Futuro?</h2>
+        <p>Entre em contacto connosco e descubra como podemos ajudar a sua organização</p>
+        <div class="cta-buttons">
+            <a href="#" class="cta-button">
+                <i class="fas fa-envelope"></i>
+                Fale Connosco
+            </a>
+            <a href="#" class="cta-button secondary">
+                <i class="fas fa-file-download"></i>
+                Baixar Brochura
+            </a>
+        </div>
+    </section>
+
+    <footer>
+        <div class="footer-content">
+            <div class="footer-section">
+                <h4>
+                    <i class="fas fa-leaf"></i>
+                    CIDHS
+                </h4>
+                <p style="color: rgba(255,255,255,0.7); line-height: 1.6;">
+                    Consultoria Interdisciplinar em Desenvolvimento Humano e Social - Ciência ao serviço do desenvolvimento.
+                </p>
+            </div>
+
+            <div class="footer-section">
+                <h4>
+                    <i class="fas fa-map-marker-alt"></i>
+                    Localização
+                </h4>
+                <p style="color: rgba(255,255,255,0.7);">
+                    Av. Julius Nyerere, Bairro Sinacura<br>
+                    Quelimane, Zambézia<br>
+                    Moçambique
+                </p>
+            </div>
+
+            <div class="footer-section">
+                <h4>
+                    <i class="fas fa-phone"></i>
+                    Contactos
+                </h4>
+                <ul>
+                    <li><a href="tel:+258846205197"><i class="fas fa-phone-alt"></i> +258 84 620 5197</a></li>
+                    <li><a href="tel:+258844142374"><i class="fas fa-phone-alt"></i> +258 84 414 2374</a></li>
+                    <li><a href="mailto:cidhs@cidhs.org"><i class="fas fa-envelope"></i> cidhs@cidhs.org</a></li>
+                </ul>
+            </div>
+
+            <div class="footer-section">
+                <h4>
+                    <i class="fas fa-link"></i>
+                    Links Rápidos
+                </h4>
+                <ul>
+                    <li><a href="index.html"><i class="fas fa-chevron-right"></i> Início</a></li>
+                    <li><a href="#"><i class="fas fa-chevron-right"></i> Sobre Nós</a></li>
+                    <li><a href="servicos.html"><i class="fas fa-chevron-right"></i> Serviços</a></li>
+                    <li><a href="#"><i class="fas fa-chevron-right"></i> Equipa</a></li>
+                </ul>
+            </div>
+        </div>
+
+        <div class="footer-bottom">
+            <p>Copyright © 2025 Todos os direitos reservados | CIDHS - Consultoria Interdisciplinar em Desenvolvimento Humano e Social, Lda.</p>
+        </div>
+    </footer>
+
+    <script>
+        // Smooth scroll
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({
+                        behavior: 'smooth',
+                        block: 'start'
+                    });
+                }
+            });
+        });
+
+        // Fade in on scroll
+        const observerOptions = {
+            threshold: 0.1,
+            rootMargin: '0px 0px -100px 0px'
+        };
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('visible');
+                }
+            });
+        }, observerOptions);
+
+        document.querySelectorAll('.fade-in').forEach(el => {
+            observer.observe(el);
+        });
+
+        // Add scroll effect to header
+        let lastScroll = 0;
+        window.addEventListener('scroll', () => {
+            const currentScroll = window.pageYOffset;
+            const header = document.querySelector('header');
+            
+            if (currentScroll > 100) {
+                header.style.boxShadow = '0 4px 20px rgba(0,0,0,0.15)';
+            } else {
+                header.style.boxShadow = '0 2px 10px rgba(0,0,0,0.1)';
+            }
+            
+            lastScroll = currentScroll;
+        });
+
+        // Animate objective items on scroll
+        const objectiveObserver = new IntersectionObserver((entries) => {
+            entries.forEach((entry, index) => {
+                if (entry.isIntersecting) {
+                    setTimeout(() => {
+                        entry.target.style.opacity = '1';
+                        entry.target.style.transform = 'translateX(0)';
+                    }, index * 100);
+                }
+            });
+        }, { threshold: 0.2 });
+
+        document.querySelectorAll('.objective-item').forEach(item => {
+            item.style.opacity = '0';
+            item.style.transform = 'translateX(-20px)';
+            item.style.transition = 'all 0.5s ease';
+            objectiveObserver.observe(item);
+        });
+
+        // Animate service categories
+        const categoryObserver = new IntersectionObserver((entries) => {
+            entries.forEach((entry, index) => {
+                if (entry.isIntersecting) {
+                    setTimeout(() => {
+                        entry.target.style.opacity = '1';
+                        entry.target.style.transform = 'translateY(0)';
+                    }, index * 150);
+                }
+            });
+        }, { threshold: 0.1 });
+
+        document.querySelectorAll('.service-category').forEach(category => {
+            category.style.opacity = '0';
+            category.style.transform = 'translateY(20px)';
+            category.style.transition = 'all 0.6s ease';
+            categoryObserver.observe(category);
+        });
+    </script>
+     <script>
+  // Toggle menu hambúrguer
+  const hamburger = document.querySelector('.hamburger');
+  const navLinks = document.getElementById('navLinks');
+
+  hamburger.addEventListener('click', () => {
+    navLinks.classList.toggle('active');
+    hamburger.classList.toggle('active');
+  });
+
+  // Fechar menu ao clicar em um link (mobile)
+  document.querySelectorAll('.nav-links a').forEach(link => {
+    link.addEventListener('click', () => {
+      navLinks.classList.remove('active');
+      hamburger.classList.remove('active');
+    });
+  });
+</script>
+</body>
+</html>
