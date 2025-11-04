@@ -44,10 +44,27 @@
         }
 
         .logo {
-            font-size: 32px;
-            font-weight: bold;
-            color: #e63946;
-            letter-spacing: 2px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            transition: all 0.3s ease;
+        }
+
+        .logo img {
+            height: 62px;
+            width: auto;
+        }
+
+        .logo-text {
+            font-size: 14px;
+            opacity: 1;
+            visibility: visible;
+            transition: opacity 0.3s, visibility 0.3s;
+        }
+
+        .logo.logo-scrolled .logo-text {
+            opacity: 0;
+            visibility: hidden;
         }
 
         .nav-links {
@@ -70,7 +87,26 @@
             color: #e63946;
         }
 
-        /* Hero Section - Full Width */
+        .hamburger {
+            display: none;
+            flex-direction: column;
+            background: none;
+            border: none;
+            cursor: pointer;
+            padding: 5px;
+            z-index: 1001;
+        }
+
+        .hamburger span {
+            width: 25px;
+            height: 3px;
+            background: #333;
+            margin: 3px 0;
+            transition: 0.3s;
+            border-radius: 2px;
+        }
+
+        /* Hero Section */
         .hero {
             min-height: 100vh;
             background: linear-gradient(135deg, rgba(30, 58, 95, 0.95) 0%, rgba(45, 90, 123, 0.95) 100%);
@@ -89,23 +125,10 @@
             left: 0;
             right: 0;
             bottom: 0;
-            background-image: var(--hero-bg-image, url('https://images.unsplash.com/photo-1522071820081-009f0129c71c?w=1920'));
+            background-image: url('https://images.unsplash.com/photo-1522071820081-009f0129c71c?w=1920');
             background-size: cover;
             background-position: center;
             z-index: -1;
-        }
-
-        .hero::after {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            right: 0;
-            bottom: 0;
-            background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1440 320"><path fill="rgba(255,255,255,0.05)" d="M0,96L48,112C96,128,192,160,288,160C384,160,480,128,576,133.3C672,139,768,181,864,181.3C960,181,1056,139,1152,128C1248,117,1344,139,1392,149.3L1440,160L1440,320L1392,320C1344,320,1248,320,1152,320C1056,320,960,320,864,320C768,320,672,320,576,320C480,320,384,320,288,320C192,320,96,320,48,320L0,320Z"></path></svg>');
-            background-size: cover;
-            opacity: 0.3;
-            z-index: 0;
         }
 
         .hero-container {
@@ -172,7 +195,6 @@
             box-shadow: 0 10px 25px rgba(230,57,70,0.3);
         }
 
-        /* Mission & Vision Cards */
         .mission-vision {
             display: grid;
             grid-template-columns: 1fr 1fr;
@@ -265,6 +287,60 @@
             margin-bottom: 20px;
         }
 
+        /* Why Consulting Section */
+        .why-consulting {
+            background: linear-gradient(135deg, #f8f9fa 0%, #e9ecef 100%);
+            padding: 100px 40px;
+            margin: 0;
+            max-width: 100%;
+        }
+
+        .why-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+            max-width: 1400px;
+            margin: 0 auto;
+        }
+
+        .why-card {
+            background: #fff;
+            padding: 35px;
+            border-radius: 15px;
+            box-shadow: 0 5px 20px rgba(0,0,0,0.08);
+            transition: all 0.3s;
+            border-left: 4px solid #e63946;
+        }
+
+        .why-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 15px 40px rgba(0,0,0,0.15);
+        }
+
+        .why-card-icon {
+            width: 60px;
+            height: 60px;
+            background: linear-gradient(135deg, #e63946, #c62a35);
+            border-radius: 12px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: #fff;
+            font-size: 28px;
+            margin-bottom: 20px;
+        }
+
+        .why-card h3 {
+            color: #1e3a5f;
+            font-size: 22px;
+            margin-bottom: 15px;
+        }
+
+        .why-card p {
+            color: #666;
+            line-height: 1.7;
+        }
+
         /* Services Grid */
         .services-grid {
             display: grid;
@@ -332,6 +408,48 @@
             color: #e63946;
         }
 
+        /* Objectives Section */
+        .objectives-section {
+            background: #fff;
+        }
+
+        .objectives-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 30px;
+        }
+
+        .objective-card {
+            background: linear-gradient(135deg, #1e3a5f 0%, #2d5a7b 100%);
+            padding: 30px;
+            border-radius: 15px;
+            color: #fff;
+            transition: all 0.3s;
+        }
+
+        .objective-card:hover {
+            transform: scale(1.05);
+            box-shadow: 0 15px 40px rgba(30, 58, 95, 0.3);
+        }
+
+        .objective-number {
+            width: 50px;
+            height: 50px;
+            background: #e63946;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 24px;
+            font-weight: bold;
+            margin-bottom: 20px;
+        }
+
+        .objective-card p {
+            line-height: 1.7;
+            font-size: 15px;
+        }
+
         /* Team Section */
         .team-grid {
             display: grid;
@@ -352,14 +470,20 @@
             width: 200px;
             height: 200px;
             border-radius: 50%;
-            background: linear-gradient(135deg, #1e3a5f, #e63946);
+            overflow: hidden;
             margin: 0 auto 25px;
             display: flex;
             align-items: center;
             justify-content: center;
-            color: #fff;
-            font-size: 48px;
-            font-weight: bold;
+            background: #f0f0f0;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.15);
+        }
+
+        .team-photo img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            display: block;
         }
 
         .team-member h3 {
@@ -376,6 +500,68 @@
             align-items: center;
             justify-content: center;
             gap: 8px;
+        }
+
+        /* WhatsApp CTA Section */
+        .whatsapp-cta {
+            background: linear-gradient(135deg, #25D366 0%, #128C7E 100%);
+            padding: 80px 40px;
+            text-align: center;
+            margin: 0;
+            max-width: 100%;
+        }
+
+        .whatsapp-cta-content {
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        .whatsapp-cta h2 {
+            color: #fff;
+            font-size: 42px;
+            margin-bottom: 20px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 15px;
+        }
+
+        .whatsapp-cta p {
+            color: rgba(255,255,255,0.95);
+            font-size: 20px;
+            margin-bottom: 40px;
+            line-height: 1.6;
+        }
+
+        .whatsapp-buttons {
+            display: flex;
+            gap: 20px;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+
+        .whatsapp-btn {
+            display: inline-flex;
+            align-items: center;
+            gap: 12px;
+            padding: 20px 40px;
+            background: #fff;
+            color: #128C7E;
+            text-decoration: none;
+            border-radius: 50px;
+            font-weight: 600;
+            font-size: 18px;
+            transition: all 0.3s;
+            box-shadow: 0 5px 20px rgba(0,0,0,0.2);
+        }
+
+        .whatsapp-btn:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 15px 40px rgba(0,0,0,0.3);
+        }
+
+        .whatsapp-btn i {
+            font-size: 24px;
         }
 
         /* Contact Section */
@@ -529,7 +715,6 @@
             color: rgba(255,255,255,0.6);
         }
 
-        /* Animations */
         .fade-in {
             opacity: 0;
             transform: translateY(30px);
@@ -556,146 +741,89 @@
             }
             
             .nav-links {
+                position: fixed;
+                top: 80px;
+                left: 0;
+                right: 0;
+                background: #fff;
+                flex-direction: column;
+                align-items: center;
+                padding: 20px 0;
+                box-shadow: 0 10px 10px rgba(0,0,0,0.1);
                 display: none;
+                z-index: 1000;
+            }
+
+            .nav-links.active {
+                display: flex;
+            }
+
+            .hamburger {
+                display: flex;
+            }
+
+            .hamburger.active span:nth-child(1) {
+                transform: rotate(-45deg) translate(-5px, 6px);
+            }
+            .hamburger.active span:nth-child(2) {
+                opacity: 0;
+            }
+            .hamburger.active span:nth-child(3) {
+                transform: rotate(45deg) translate(-5px, -6px);
+            }
+
+            .whatsapp-buttons {
+                flex-direction: column;
+            }
+
+            .whatsapp-btn {
+                width: 100%;
+                justify-content: center;
             }
         }
 
-        .logo {
-  display: flex;
-  align-items: center;
-  gap: 8px; /* espaço entre a imagem e o texto */
+        .nav-links a.active {
+    color: #e63946;
+    position: relative;
 }
 
-.logo img {
-  height: 62px; /* ajuste conforme necessário */
-  width: auto;
-}
-.logo span {
-  font-size: 13px;
-}
-.logo {
-  display: flex;
-  align-items: center;
-  gap: 10px;
-  transition: all 0.3s ease; /* suaviza mudanças, se quiser */
-}
-
-.logo-text {
-  font-size: 14px;
-  opacity: 1;
-  visibility: visible;
-  transition: opacity 0.3s, visibility 0.3s;
-}
-
-.logo.logo-scrolled .logo-text {
-  opacity: 0;
-  visibility: hidden;
-  /* ou use display: none, mas sem transição suave */
-}
-
-/* Estilo do botão hambúrguer */
-.hamburger {
-  display: none;
-  flex-direction: column;
-  background: none;
-  border: none;
-  cursor: pointer;
-  padding: 5px;
-  z-index: 1001;
-}
-
-.hamburger span {
-  width: 25px;
-  height: 3px;
-  background: #333;
-  margin: 3px 0;
-  transition: 0.3s;
-  border-radius: 2px;
-}
-
-/* Menu mobile */
-@media (max-width: 768px) {
-  .nav-links {
-    position: fixed;
-    top: 80px;
+.nav-links a.active::after {
+    content: '';
+    position: absolute;
+    bottom: -5px;
     left: 0;
     right: 0;
-    background: #fff;
-    flex-direction: column;
-    align-items: center;
-    padding: 20px 0;
-    box-shadow: 0 10px 10px rgba(0,0,0,0.1);
-    display: none; /* escondido por padrão */
-    z-index: 1000;
-  }
-
-  .nav-links.active {
-    display: flex;
-  }
-
-  .hamburger {
-    display: flex;
-  }
-
-  /* Animação do hambúrguer ao abrir */
-  .hamburger.active span:nth-child(1) {
-    transform: rotate(-45deg) translate(-5px, 6px);
-  }
-  .hamburger.active span:nth-child(2) {
-    opacity: 0;
-  }
-  .hamburger.active span:nth-child(3) {
-    transform: rotate(45deg) translate(-5px, -6px);
-  }
+    height: 3px;
+    background: #e63946;
+    border-radius: 2px;
 }
-
-.team-photo {
-  width: 200px;
-  height: 200px;
-  border-radius: 50%;
-  overflow: hidden;
-  margin: 0 auto 25px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  background: #f0f0f0; /* fallback se a imagem não carregar */
-}
-
-.team-photo img {
-  width: 100%;
-  height: 100%;
-  object-fit: cover; /* mantém proporção e corta se necessário */
-  display: block;
-}
-
     </style>
 </head>
 <body>
-        <header id="header">
+    <header id="header">
         <nav>
             <div class="logo">
-            <a href="/">
-                <img src="img/photo_2025-10-25_10-47-33.jpg" alt="Logo CIDHS">
-            </a>
-            <span class="logo-text">Consultoria Interdisciplinar <br> em Desenvolvimento Humano e Social</span>
+                <a href="/">
+                    <img src="img/photo_2025-10-25_10-47-33.jpg" alt="Logo CIDHS">
+                </a>
+                <span class="logo-text">Consultoria Interdisciplinar <br> em Desenvolvimento Humano e Social</span>
             </div>
 
-            <!-- Botão hambúrguer (só aparece em mobile) -->
             <button class="hamburger" aria-label="Alternar menu">
-            <span></span>
-            <span></span>
-            <span></span>
+                <span></span>
+                <span></span>
+                <span></span>
             </button>
 
-            <!-- Links de navegação -->
             <ul class="nav-links" id="navLinks">
-            <li><a href="sobrenos.html"><i class="fas fa-info-circle"></i> Sobre</a></li>
-            <li><a href="servicos.html"><i class="fas fa-briefcase"></i> Serviços</a></li>
-            <li><a href="#equipa"><i class="fas fa-users"></i> Equipa</a></li>
-            <li><a href="#contato"><i class="fas fa-envelope"></i> Contato</a></li>
+                <li><a href="index.html" class="active"><i class="fas fa-home"></i> Inicio</a></li>
+                <li><a href="sobrenos.html"><i class="fas fa-users"></i> Sobre Nós</a></li>
+                <li><a href="servicos.html"><i class="fas fa-concierge-bell"></i> Nossos Serviços</a></li>
+                <li><a href="protofolio_projeto.html"><i class="fas fa-folder-open"></i> Portfólio/Projectos</a></li>
+                <li><a href="noticias_eventos.html"><i class="fas fa-calendar-alt"></i> Eventos</a></li>
             </ul>
         </nav>
-        </header>
+    </header>
 
     <section class="hero" id="inicio">
         <div class="hero-container">
@@ -757,9 +885,69 @@
                 A CIDHS – Consultoria Interdisciplinar em Desenvolvimento Humano e Social, Lda., é uma sociedade 
                 por quotas moçambicana, sediada em Quelimane, Zambézia, que actua nas áreas de consultoria técnica, 
                 científica e social. Criada em 2025, dedica-se ao desenvolvimento humano, à promoção de políticas públicas 
-                inclusivas, à equidade de género e à inovação educativa. O seu trabalho combina investigação aplicada, 
+                inclusivas, à equidade de género e à inovação educativa. O nosso trabalho combina investigação aplicada, 
                 capacitação, advocacia e consultoria estratégica, orientadas para resultados sustentáveis e impacto social positivo.
             </p>
+        </div>
+    </section>
+
+    <section class="why-consulting">
+        <div class="section-header fade-in">
+            <div class="section-tag">
+                <i class="fas fa-question-circle"></i>
+                PORQUÊ CONSULTORIA?
+            </div>
+            <h2 class="section-title">Motivos para Escolher a CIDHS</h2>
+        </div>
+
+        <div class="why-grid">
+            <div class="why-card fade-in">
+                <div class="why-card-icon">
+                    <i class="fas fa-microscope"></i>
+                </div>
+                <h3>Abordagem Científica</h3>
+                <p>Fundamentamos nossas soluções em evidências científicas e metodologias comprovadas, garantindo resultados mensuráveis e sustentáveis para cada projecto.</p>
+            </div>
+
+            <div class="why-card fade-in">
+                <div class="why-card-icon">
+                    <i class="fas fa-network-wired"></i>
+                </div>
+                <h3>Interdisciplinaridade</h3>
+                <p>Integramos conhecimentos de múltiplas áreas para oferecer soluções holísticas que abordam os desafios complexos do desenvolvimento humano e social.</p>
+            </div>
+
+            <div class="why-card fade-in">
+                <div class="why-card-icon">
+                    <i class="fas fa-users-cog"></i>
+                </div>
+                <h3>Capacitação Contínua</h3>
+                <p>Investimos no fortalecimento de capacidades locais, promovendo autonomia e sustentabilidade das comunidades e instituições que servimos.</p>
+            </div>
+
+            <div class="why-card fade-in">
+                <div class="why-card-icon">
+                    <i class="fas fa-chart-line"></i>
+                </div>
+                <h3>Impacto Mensurável</h3>
+                <p>Utilizamos sistemas rigorosos de monitoria e avaliação para garantir que nossas intervenções produzam mudanças concretas e duradouras.</p>
+            </div>
+
+            <div class="why-card fade-in">
+                <div class="why-card-icon">
+                    <i class="fas fa-handshake"></i>
+                </div>
+                <h3>Parcerias Estratégicas</h3>
+                <p>Construímos alianças sólidas com instituições públicas, privadas e da sociedade civil para maximizar o alcance e a eficácia de nossas intervenções.</p>
+            </div>
+
+            <div class="why-card fade-in">
+                <div class="why-card-icon">
+                    <i class="fas fa-leaf"></i>
+                </div>
+                <h3>Compromisso com a Sustentabilidade</h3>
+                <p>Alinhamos todas as nossas acções com os Objectivos de Desenvolvimento Sustentável, promovendo um desenvolvimento equilibrado e inclusivo.</p>
+            </div>
         </div>
     </section>
 
@@ -831,6 +1019,152 @@
         </div>
     </section>
 
+    <section style="background: #fff;">
+        <div class="section-header fade-in">
+            <div class="section-tag">
+                <i class="fas fa-project-diagram"></i>
+                ÁREAS AFINS DE INTERVENÇÃO
+            </div>
+            <h2 class="section-title">Serviços Sociais, Desenvolvimento Comunitário,<br>Agricultura e Sustentabilidade Ambiental</h2>
+            <p style="max-width: 1000px; margin: 0 auto; color: #666; line-height: 1.8; font-size: 18px;">
+                Promovemos o desenvolvimento humano, social e económico sustentável através da integração de políticas e práticas que reforçam os serviços sociais, estimulam a participação comunitária, melhoram a produtividade agrícola e asseguram a sustentabilidade ambiental, contribuindo para o cumprimento dos Objectivos de Desenvolvimento Sustentável e para a redução das desigualdades nos territórios de intervenção.
+            </p>
+        </div>
+    </section>
+
+    <section class="objectives-section">
+        <div class="section-header fade-in">
+            <div class="section-tag">
+                <i class="fas fa-bullseye"></i>
+                OBJECTIVOS ESTRATÉGICOS
+            </div>
+            <h2 class="section-title">Nossos Objectivos Específicos</h2>
+        </div>
+
+        <div class="objectives-grid">
+            <div class="objective-card fade-in">
+                <div class="objective-number">1</div>
+                <p>Reforçar os serviços sociais básicos, assegurando protecção social, igualdade de género, educação inclusiva e saúde comunitária.</p>
+            </div>
+
+            <div class="objective-card fade-in">
+                <div class="objective-number">2</div>
+                <p>Fortalecer as capacidades locais para a governação participativa, gestão comunitária de recursos e planificação para o desenvolvimento local.</p>
+            </div>
+
+            <div class="objective-card fade-in">
+                <div class="objective-number">3</div>
+                <p>Promover práticas agrícolas sustentáveis, diversificação de culturas e segurança alimentar nas comunidades rurais.</p>
+            </div>
+
+            <div class="objective-card fade-in">
+                <div class="objective-number">4</div>
+                <p>Fomentar a integração das preocupações ambientais em todos os programas comunitários, assegurando o uso racional dos recursos naturais e a mitigação dos impactos climáticos.</p>
+            </div>
+
+            <div class="objective-card fade-in">
+                <div class="objective-number">5</div>
+                <p>Estabelecer parcerias intersectoriais com instituições públicas, privadas e da sociedade civil para a implementação de projectos integrados de desenvolvimento humano, social e ecológico.</p>
+            </div>
+        </div>
+    </section>
+
+    <section style="background: #f8f9fa;">
+        <div class="section-header fade-in">
+            <div class="section-tag">
+                <i class="fas fa-tasks"></i>
+                SERVIÇOS ESPECIALIZADOS
+            </div>
+            <h2 class="section-title">Principais Serviços Oferecidos</h2>
+        </div>
+
+        <div class="services-grid">
+            <div class="service-card fade-in">
+                <div class="service-icon">
+                    <i class="fas fa-shield-alt"></i>
+                </div>
+                <h3>Protecção Social e Inclusão</h3>
+                <p>Assistência técnica e institucional completa.</p>
+                <ul class="service-list">
+                    <li>Programas de protecção social</li>
+                    <li>Igualdade de género</li>
+                    <li>Inclusão produtiva</li>
+                    <li>Empoderamento comunitário</li>
+                </ul>
+            </div>
+
+            <div class="service-card fade-in">
+                <div class="service-icon">
+                    <i class="fas fa-users"></i>
+                </div>
+                <h3>Capacitação Comunitária</h3>
+                <p>Formação especializada para lideranças locais.</p>
+                <ul class="service-list">
+                    <li>Gestão local participativa</li>
+                    <li>Liderança comunitária</li>
+                    <li>Associativismo</li>
+                    <li>Empreendedorismo rural</li>
+                </ul>
+            </div>
+
+            <div class="service-card fade-in">
+                <div class="service-icon">
+                    <i class="fas fa-seedling"></i>
+                </div>
+                <h3>Agricultura Sustentável</h3>
+                <p>Práticas agrícolas modernas e resilientes.</p>
+                <ul class="service-list">
+                    <li>Agroecologia</li>
+                    <li>Sistemas alimentares resilientes</li>
+                    <li>Apoio técnico a produtores</li>
+                    <li>Fortalecimento de cooperativas</li>
+                </ul>
+            </div>
+
+            <div class="service-card fade-in">
+                <div class="service-icon">
+                    <i class="fas fa-tree"></i>
+                </div>
+                <h3>Sustentabilidade Ambiental</h3>
+                <p>Educação e conservação ambiental integrada.</p>
+                <ul class="service-list">
+                    <li>Conservação da biodiversidade</li>
+                    <li>Programas de reflorestamento</li>
+                    <li>Gestão de recursos hídricos</li>
+                    <li>Gestão florestal integrada</li>
+                </ul>
+            </div>
+
+            <div class="service-card fade-in">
+                <div class="service-icon">
+                    <i class="fas fa-clipboard-list"></i>
+                </div>
+                <h3>Projectos de Desenvolvimento</h3>
+                <p>Elaboração e gestão integral de projectos.</p>
+                <ul class="service-list">
+                    <li>Desenvolvimento local integrado</li>
+                    <li>Dimensões sociais, económicas e ambientais</li>
+                    <li>Alinhamento com os ODS</li>
+                    <li>Monitoria e avaliação</li>
+                </ul>
+            </div>
+
+            <div class="service-card fade-in">
+                <div class="service-icon">
+                    <i class="fas fa-network-wired"></i>
+                </div>
+                <h3>Redes de Cooperação</h3>
+                <p>Criação de parcerias estratégicas territoriais.</p>
+                <ul class="service-list">
+                    <li>Articulação comunitária</li>
+                    <li>Parcerias com autoridades locais</li>
+                    <li>Colaboração com parceiros de desenvolvimento</li>
+                    <li>Plataformas de diálogo multi-sectorial</li>
+                </ul>
+            </div>
+        </div>
+    </section>
+
     <section id="equipa">
         <div class="section-header fade-in">
             <div class="section-tag">
@@ -841,27 +1175,49 @@
         </div>
 
         <div class="team-grid">
-        <div class="team-member fade-in">
-            <div class="team-photo">
-            <img src="img/photo_2025-10-25_22-22-05.jpg" alt="Aniceto Mapfala">
+            <div class="team-member fade-in">
+                <div class="team-photo">
+                    <img src="img/photo_2025-10-25_22-22-05.jpg" alt="Aniceto Mapfala">
+                </div>
+                <h3>Aniceto Mapfala PhD</h3>
+                <p class="team-role">
+                    <i class="fas fa-briefcase"></i>
+                    Director Executivo
+                </p>
             </div>
-            <h3>Aniceto Mapfala PhD</h3>
-            <p class="team-role">
-            <i class="fas fa-briefcase"></i>
-            Director Executivo
-            </p>
-        </div>
 
-        <div class="team-member fade-in">
-            <div class="team-photo">
-            <img src="img/photo_2025-10-25_22-21-59.jpg" alt="Ruben Daniel Ulaia">
+            <div class="team-member fade-in">
+                <div class="team-photo">
+                    <img src="img/photo_2025-10-25_22-21-59.jpg" alt="Ruben Daniel Ulaia">
+                </div>
+                <h3>Ruben Daniel Ulaia MSc</h3>
+                <p class="team-role">
+                    <i class="fas fa-cogs"></i>
+                    Director Técnico
+                </p>
             </div>
-            <h3>Ruben Daniel Ulaia MSc</h3>
-            <p class="team-role">
-            <i class="fas fa-cogs"></i>
-            Director Técnico
-            </p>
         </div>
+    </section>
+
+    <section class="whatsapp-cta">
+        <div class="whatsapp-cta-content fade-in">
+            <h2>
+                <i class="fab fa-whatsapp"></i>
+                Fale Connosco no WhatsApp
+            </h2>
+            <p>
+                Entre em contacto directo com a nossa equipa através do WhatsApp. Estamos prontos para responder às suas questões e discutir como podemos colaborar no seu projecto de desenvolvimento.
+            </p>
+            <div class="whatsapp-buttons">
+                <a href="https://wa.me/258846205197" class="whatsapp-btn" target="_blank">
+                    <i class="fab fa-whatsapp"></i>
+                    +258 84 620 5197
+                </a>
+                <a href="https://wa.me/258844142374" class="whatsapp-btn" target="_blank">
+                    <i class="fab fa-whatsapp"></i>
+                    +258 84 414 2374
+                </a>
+            </div>
         </div>
     </section>
 
@@ -925,10 +1281,10 @@
             <div class="footer-section">
                 <h4>
                     <i class="fas fa-leaf"></i>
-                    Consulting.
+                    CIDHS
                 </h4>
                 <p style="color: rgba(255,255,255,0.7); line-height: 1.6;">
-                    Receba actualizações e últimas notícias diretamente da CIDHS.
+                    Consultoria Interdisciplinar em Desenvolvimento Humano e Social. Receba actualizações e últimas notícias diretamente da CIDHS.
                 </p>
             </div>
 
@@ -941,7 +1297,7 @@
                     <li><a href="#sobre"><i class="fas fa-chevron-right"></i> Sobre</a></li>
                     <li><a href="#servicos"><i class="fas fa-chevron-right"></i> Serviços</a></li>
                     <li><a href="#equipa"><i class="fas fa-chevron-right"></i> Equipa</a></li>
-                    <li><a href="#"><i class="fas fa-chevron-right"></i> Política de Privacidade</a></li>
+                    <li><a href="#contato"><i class="fas fa-chevron-right"></i> Contacto</a></li>
                 </ul>
             </div>
 
@@ -951,31 +1307,42 @@
                     ÁREAS
                 </h4>
                 <ul>
-                    <li><a href="#"><i class="fas fa-chevron-right"></i> Educação</a></li>
-                    <li><a href="#"><i class="fas fa-chevron-right"></i> Governação</a></li>
-                    <li><a href="#"><i class="fas fa-chevron-right"></i> Género</a></li>
-                    <li><a href="#"><i class="fas fa-chevron-right"></i> Empoderamento</a></li>
+                    <li><a href="#servicos"><i class="fas fa-chevron-right"></i> Educação</a></li>
+                    <li><a href="#servicos"><i class="fas fa-chevron-right"></i> Governação</a></li>
+                    <li><a href="#servicos"><i class="fas fa-chevron-right"></i> Género</a></li>
+                    <li><a href="#servicos"><i class="fas fa-chevron-right"></i> Empoderamento</a></li>
+                </ul>
+            </div>
+
+            <div class="footer-section">
+                <h4>
+                    <i class="fas fa-link"></i>
+                    CONTACTOS RÁPIDOS
+                </h4>
+                <ul>
+                    <li><a href="https://wa.me/258846205197" target="_blank"><i class="fab fa-whatsapp"></i> WhatsApp 1</a></li>
+                    <li><a href="https://wa.me/258844142374" target="_blank"><i class="fab fa-whatsapp"></i> WhatsApp 2</a></li>
+                    <li><a href="mailto:cidhs@cidhs.org"><i class="fas fa-envelope"></i> Email</a></li>
                 </ul>
             </div>
         </div>
 
         <div class="footer-bottom">
-            <p>Copyright © 2025 Todos os direitos reservados | CIDHS - Consultoria Interdisciplinar</p>
+            <p>Copyright © 2025 Todos os direitos reservados | CIDHS - Consultoria Interdisciplinar em Desenvolvimento Humano e Social</p>
         </div>
     </footer>
 
     <script>
-  window.addEventListener('scroll', function() {
-    const logo = document.querySelector('.logo');
-    if (window.scrollY > 50) { // rolagem maior que 50px
-      logo.classList.add('logo-scrolled');
-    } else {
-      logo.classList.remove('logo-scrolled');
-    }
-  });
-</script>
+        // Logo scroll effect
+        window.addEventListener('scroll', function() {
+            const logo = document.querySelector('.logo');
+            if (window.scrollY > 50) {
+                logo.classList.add('logo-scrolled');
+            } else {
+                logo.classList.remove('logo-scrolled');
+            }
+        });
 
-    <script>
         // Header scroll effect
         window.addEventListener('scroll', () => {
             const header = document.getElementById('header');
@@ -1018,6 +1385,23 @@
             observer.observe(el);
         });
 
+        // Toggle menu hambúrguer
+        const hamburger = document.querySelector('.hamburger');
+        const navLinks = document.getElementById('navLinks');
+
+        hamburger.addEventListener('click', () => {
+            navLinks.classList.toggle('active');
+            hamburger.classList.toggle('active');
+        });
+
+        // Fechar menu ao clicar em um link (mobile)
+        document.querySelectorAll('.nav-links a').forEach(link => {
+            link.addEventListener('click', () => {
+                navLinks.classList.remove('active');
+                hamburger.classList.remove('active');
+            });
+        });
+
         // Form submission
         document.querySelector('form').addEventListener('submit', (e) => {
             e.preventDefault();
@@ -1025,23 +1409,5 @@
             e.target.reset();
         });
     </script>
-    <script>
-  // Toggle menu hambúrguer
-  const hamburger = document.querySelector('.hamburger');
-  const navLinks = document.getElementById('navLinks');
-
-  hamburger.addEventListener('click', () => {
-    navLinks.classList.toggle('active');
-    hamburger.classList.toggle('active');
-  });
-
-  // Fechar menu ao clicar em um link (mobile)
-  document.querySelectorAll('.nav-links a').forEach(link => {
-    link.addEventListener('click', () => {
-      navLinks.classList.remove('active');
-      hamburger.classList.remove('active');
-    });
-  });
-</script>
 </body>
 </html>
