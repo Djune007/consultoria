@@ -1,0 +1,1485 @@
+<!DOCTYPE html>
+<html lang="pt">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CIDHS - Notícias e Eventos</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            color: #1a1a1a;
+            overflow-x: hidden;
+            background: #f8f9fa;
+        }
+
+        /* Header & Navigation */
+        header {
+            position: fixed;
+            top: 0;
+            width: 100%;
+            background: #fff;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+            z-index: 1000;
+            transition: all 0.3s ease;
+        }
+
+        nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 20px 40px;
+        }
+
+        .logo {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .logo img {
+            height: 62px;
+            width: auto;
+        }
+
+        .logo-text {
+            font-size: 14px;
+        }
+
+        .nav-links {
+            display: flex;
+            list-style: none;
+            gap: 40px;
+        }
+
+        .nav-links a {
+            text-decoration: none;
+            color: #333;
+            font-weight: 500;
+            transition: color 0.3s;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .nav-links a:hover {
+            color: #e63946;
+        }
+
+        .hamburger {
+            display: none;
+            flex-direction: column;
+            background: none;
+            border: none;
+            cursor: pointer;
+            padding: 5px;
+        }
+
+        .hamburger span {
+            width: 25px;
+            height: 3px;
+            background: #333;
+            margin: 3px 0;
+            transition: 0.3s;
+            border-radius: 2px;
+        }
+
+        /* Hero Section */
+        .hero {
+            min-height: 60vh;
+            background: linear-gradient(135deg, rgba(230, 57, 70, 0.95) 0%, rgba(198, 42, 53, 0.95) 100%);
+            display: flex;
+            align-items: center;
+            position: relative;
+            overflow: hidden;
+            padding: 150px 40px 80px;
+        }
+
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background-image: url('https://images.unsplash.com/photo-1540575467063-178a50c2df87?w=1920');
+            background-size: cover;
+            background-position: center;
+            z-index: -1;
+        }
+
+        .hero-content {
+            max-width: 1400px;
+            margin: 0 auto;
+            text-align: center;
+            color: #fff;
+        }
+
+        .hero h1 {
+            font-size: 56px;
+            margin-bottom: 20px;
+            animation: fadeInUp 1s forwards;
+        }
+
+        .hero p {
+            font-size: 22px;
+            opacity: 0.95;
+            max-width: 800px;
+            margin: 0 auto;
+            line-height: 1.6;
+            animation: fadeInUp 1s forwards 0.3s;
+        }
+
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        /* Main Content */
+        .main-content {
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 80px 40px;
+        }
+
+        .section-header {
+            text-align: center;
+            margin-bottom: 60px;
+        }
+
+        .section-tag {
+            color: #e63946;
+            font-size: 16px;
+            font-weight: 600;
+            margin-bottom: 15px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 10px;
+        }
+
+        .section-title {
+            font-size: 42px;
+            color: #1e3a5f;
+            margin-bottom: 20px;
+        }
+
+        /* Featured News */
+        .featured-news {
+            background: #fff;
+            border-radius: 20px;
+            overflow: hidden;
+            box-shadow: 0 10px 40px rgba(0,0,0,0.1);
+            margin-bottom: 80px;
+            transition: all 0.3s;
+        }
+
+        .featured-news:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 20px 60px rgba(0,0,0,0.15);
+        }
+
+        .featured-image {
+            height: 400px;
+            background: linear-gradient(135deg, #1e3a5f 0%, #e63946 100%);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .featured-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            opacity: 0.8;
+        }
+
+        .featured-badge {
+            position: absolute;
+            top: 30px;
+            left: 30px;
+            background: #e63946;
+            color: #fff;
+            padding: 10px 25px;
+            border-radius: 50px;
+            font-weight: 600;
+            font-size: 14px;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .featured-content {
+            padding: 50px;
+        }
+
+        .featured-meta {
+            display: flex;
+            gap: 30px;
+            margin-bottom: 25px;
+            flex-wrap: wrap;
+        }
+
+        .meta-item {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            color: #666;
+            font-size: 14px;
+        }
+
+        .meta-item i {
+            color: #e63946;
+        }
+
+        .featured-content h2 {
+            font-size: 36px;
+            color: #1e3a5f;
+            margin-bottom: 20px;
+            line-height: 1.3;
+        }
+
+        .featured-content p {
+            color: #666;
+            font-size: 18px;
+            line-height: 1.7;
+            margin-bottom: 30px;
+        }
+
+        .read-more-btn {
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+            padding: 15px 35px;
+            background: #e63946;
+            color: #fff;
+            text-decoration: none;
+            border-radius: 50px;
+            font-weight: 600;
+            transition: all 0.3s;
+        }
+
+        .read-more-btn:hover {
+            background: #c62a35;
+            transform: translateX(5px);
+        }
+
+        /* News Grid */
+        .news-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
+            gap: 30px;
+            margin-bottom: 80px;
+        }
+
+        .news-card {
+            background: #fff;
+            border-radius: 15px;
+            overflow: hidden;
+            box-shadow: 0 5px 20px rgba(0,0,0,0.08);
+            transition: all 0.3s;
+        }
+
+        .news-card:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 15px 40px rgba(0,0,0,0.15);
+        }
+
+        .news-image {
+            height: 220px;
+            background: linear-gradient(135deg, #1e3a5f, #e63946);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .news-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .news-category {
+            position: absolute;
+            top: 15px;
+            right: 15px;
+            background: rgba(230, 57, 70, 0.95);
+            color: #fff;
+            padding: 6px 15px;
+            border-radius: 20px;
+            font-size: 12px;
+            font-weight: 600;
+        }
+
+        .news-content {
+            padding: 25px;
+        }
+
+        .news-date {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            color: #999;
+            font-size: 13px;
+            margin-bottom: 15px;
+        }
+
+        .news-content h3 {
+            color: #1e3a5f;
+            font-size: 20px;
+            margin-bottom: 15px;
+            line-height: 1.4;
+            min-height: 56px;
+        }
+
+        .news-excerpt {
+            color: #666;
+            font-size: 15px;
+            line-height: 1.6;
+            margin-bottom: 20px;
+        }
+
+        .news-footer {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding-top: 20px;
+            border-top: 1px solid #eee;
+        }
+
+        .news-author {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .author-avatar {
+            width: 35px;
+            height: 35px;
+            background: linear-gradient(135deg, #1e3a5f, #e63946);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: #fff;
+            font-weight: bold;
+            font-size: 14px;
+        }
+
+        .author-name {
+            color: #1e3a5f;
+            font-weight: 600;
+            font-size: 14px;
+        }
+
+        .read-more-link {
+            color: #e63946;
+            font-weight: 600;
+            text-decoration: none;
+            display: flex;
+            align-items: center;
+            gap: 5px;
+            font-size: 14px;
+        }
+
+        .read-more-link:hover {
+            gap: 10px;
+        }
+
+        /* Events Section */
+        .events-section {
+            background: linear-gradient(135deg, #1e3a5f 0%, #2d5a7b 100%);
+            padding: 100px 40px;
+            margin: 0;
+            max-width: 100%;
+        }
+
+        .events-container {
+            max-width: 1400px;
+            margin: 0 auto;
+        }
+
+        .events-section .section-tag {
+            color: #e63946;
+        }
+
+        .events-section .section-title {
+            color: #fff;
+        }
+
+        .events-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+            gap: 30px;
+        }
+
+        .event-card {
+            background: rgba(255,255,255,0.1);
+            backdrop-filter: blur(10px);
+            border-radius: 15px;
+            overflow: hidden;
+            border: 1px solid rgba(255,255,255,0.2);
+            transition: all 0.3s;
+        }
+
+        .event-card:hover {
+            background: rgba(255,255,255,0.15);
+            transform: translateY(-5px);
+            box-shadow: 0 15px 40px rgba(0,0,0,0.3);
+        }
+
+        .event-date-badge {
+            background: #e63946;
+            color: #fff;
+            padding: 20px;
+            text-align: center;
+        }
+
+        .event-day {
+            font-size: 42px;
+            font-weight: bold;
+            line-height: 1;
+        }
+
+        .event-month {
+            font-size: 16px;
+            font-weight: 600;
+            margin-top: 5px;
+        }
+
+        .event-content {
+            padding: 25px;
+            color: #fff;
+        }
+
+        .event-type {
+            display: inline-block;
+            padding: 5px 12px;
+            background: rgba(230, 57, 70, 0.3);
+            border-radius: 15px;
+            font-size: 11px;
+            font-weight: 600;
+            text-transform: uppercase;
+            margin-bottom: 15px;
+        }
+
+        .event-content h3 {
+            font-size: 20px;
+            margin-bottom: 15px;
+            line-height: 1.3;
+        }
+
+        .event-details {
+            margin-bottom: 20px;
+        }
+
+        .event-detail-item {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            margin-bottom: 10px;
+            font-size: 14px;
+            opacity: 0.9;
+        }
+
+        .event-detail-item i {
+            color: #e63946;
+            width: 20px;
+        }
+
+        .event-cta {
+            display: flex;
+            gap: 10px;
+        }
+
+        .event-btn {
+            flex: 1;
+            padding: 12px;
+            border: 2px solid rgba(255,255,255,0.3);
+            background: transparent;
+            color: #fff;
+            border-radius: 8px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s;
+            text-align: center;
+            text-decoration: none;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 8px;
+            font-size: 14px;
+        }
+
+        .event-btn:hover {
+            background: #e63946;
+            border-color: #e63946;
+        }
+
+        /* Upcoming Events Timeline */
+        .timeline-section {
+            background: #fff;
+            padding: 100px 40px;
+        }
+
+        .timeline {
+            max-width: 900px;
+            margin: 0 auto;
+            position: relative;
+        }
+
+        .timeline::before {
+            content: '';
+            position: absolute;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 4px;
+            height: 100%;
+            background: linear-gradient(180deg, #e63946, #1e3a5f);
+        }
+
+        .timeline-item {
+            margin-bottom: 50px;
+            position: relative;
+        }
+
+        .timeline-item:nth-child(odd) {
+            padding-right: calc(50% + 40px);
+            text-align: right;
+        }
+
+        .timeline-item:nth-child(even) {
+            padding-left: calc(50% + 40px);
+            text-align: left;
+        }
+
+        .timeline-dot {
+            position: absolute;
+            top: 0;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 20px;
+            height: 20px;
+            background: #e63946;
+            border-radius: 50%;
+            border: 4px solid #fff;
+            box-shadow: 0 0 0 4px #e63946;
+        }
+
+        .timeline-content {
+            background: #f8f9fa;
+            padding: 25px;
+            border-radius: 15px;
+            box-shadow: 0 5px 20px rgba(0,0,0,0.08);
+        }
+
+        .timeline-date {
+            color: #e63946;
+            font-weight: 600;
+            margin-bottom: 10px;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .timeline-item:nth-child(odd) .timeline-date {
+            justify-content: flex-end;
+        }
+
+        .timeline-content h4 {
+            color: #1e3a5f;
+            font-size: 20px;
+            margin-bottom: 10px;
+        }
+
+        .timeline-content p {
+            color: #666;
+            line-height: 1.6;
+            font-size: 15px;
+        }
+
+        /* Newsletter Section */
+        .newsletter-section {
+            background: linear-gradient(135deg, #e63946 0%, #c62a35 100%);
+            padding: 80px 40px;
+            text-align: center;
+            color: #fff;
+        }
+
+        .newsletter-content {
+            max-width: 700px;
+            margin: 0 auto;
+        }
+
+        .newsletter-content h2 {
+            font-size: 38px;
+            margin-bottom: 15px;
+        }
+
+        .newsletter-content p {
+            font-size: 18px;
+            margin-bottom: 35px;
+            opacity: 0.95;
+        }
+
+        .newsletter-form {
+            display: flex;
+            gap: 15px;
+            max-width: 600px;
+            margin: 0 auto;
+        }
+
+        .newsletter-input {
+            flex: 1;
+            padding: 18px 25px;
+            border: none;
+            border-radius: 50px;
+            font-size: 16px;
+        }
+
+        .newsletter-btn {
+            padding: 18px 40px;
+            background: #1e3a5f;
+            color: #fff;
+            border: none;
+            border-radius: 50px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .newsletter-btn:hover {
+            background: #0f2438;
+            transform: translateY(-2px);
+        }
+
+        /* Footer */
+        footer {
+            background: #0a1929;
+            color: #fff;
+            padding: 60px 40px 30px;
+        }
+
+        .footer-content {
+            max-width: 1400px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 40px;
+            margin-bottom: 40px;
+        }
+
+        .footer-section h4 {
+            color: #e63946;
+            margin-bottom: 20px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .footer-section ul {
+            list-style: none;
+        }
+
+        .footer-section ul li {
+            margin-bottom: 10px;
+        }
+
+        .footer-section a {
+            color: rgba(255,255,255,0.7);
+            text-decoration: none;
+            transition: color 0.3s;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .footer-section a:hover {
+            color: #e63946;
+        }
+
+        .footer-bottom {
+            text-align: center;
+            padding-top: 30px;
+            border-top: 1px solid rgba(255,255,255,0.1);
+            color: rgba(255,255,255,0.6);
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .hero h1 {
+                font-size: 36px;
+            }
+
+            .featured-content {
+                padding: 30px 25px;
+            }
+
+            .featured-content h2 {
+                font-size: 28px;
+            }
+
+            .news-grid,
+            .events-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .nav-links {
+                position: fixed;
+                top: 80px;
+                left: 0;
+                right: 0;
+                background: #fff;
+                flex-direction: column;
+                align-items: center;
+                padding: 20px 0;
+                box-shadow: 0 10px 10px rgba(0,0,0,0.1);
+                display: none;
+                z-index: 1000;
+            }
+
+            .nav-links.active {
+                display: flex;
+            }
+
+            .hamburger {
+                display: flex;
+            }
+
+            .hamburger.active span:nth-child(1) {
+                transform: rotate(-45deg) translate(-5px, 6px);
+            }
+            .hamburger.active span:nth-child(2) {
+                opacity: 0;
+            }
+            .hamburger.active span:nth-child(3) {
+                transform: rotate(45deg) translate(-5px, -6px);
+            }
+
+            .newsletter-form {
+                flex-direction: column;
+            }
+
+            .timeline::before {
+                left: 20px;
+            }
+
+            .timeline-item:nth-child(odd),
+            .timeline-item:nth-child(even) {
+                padding-left: 60px;
+                padding-right: 0;
+                text-align: left;
+            }
+
+            .timeline-dot {
+                left: 20px;
+            }
+
+            .timeline-item:nth-child(odd) .timeline-date {
+                justify-content: flex-start;
+            }
+        }
+
+        .fade-in {
+            opacity: 0;
+            transform: translateY(30px);
+            transition: all 0.8s;
+        }
+
+        .fade-in.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        .nav-links a.active {
+    color: #e63946;
+    position: relative;
+}
+
+.nav-links a.active::after {
+    content: '';
+    position: absolute;
+    bottom: -5px;
+    left: 0;
+    right: 0;
+    height: 3px;
+    background: #e63946;
+    border-radius: 2px;
+}
+    </style>
+</head>
+<body>
+    <header id="header">
+        <nav>
+            <div class="logo">
+                <a href="index.html">
+                    <img src="img/photo_2025-10-25_10-47-33.jpg" alt="Logo CIDHS">
+                </a>
+                <span class="logo-text"></span>
+            </div>
+
+            <button class="hamburger" aria-label="Alternar menu">
+                <span></span>
+                <span></span>
+                <span></span>
+            </button>
+
+            <ul class="nav-links" id="navLinks">
+                <li><a href="index.html"><i class="fas fa-info-circle"></i> Inicio</a></li>
+                <li><a href="sobrenos.html"><i class="fas fa-users"></i> Sobre Nós</a></li>
+                <li><a href="servicos.html"><i class="fas fa-concierge-bell"></i> Nossos Serviços</a></li>
+                <li><a href="protofolio_projeto.html"><i class="fas fa-folder-open"></i> Portfólio/Projectos</a></li>
+                <li><a href="noticias_eventos.html" class="active"><i class="fas fa-calendar-alt"></i> Eventos</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <section class="hero">
+        <div class="hero-content">
+            <h1><i class="fas fa-newspaper"></i> Notícias e Eventos</h1>
+            <p>Acompanhe as últimas actualizações, projectos em curso e eventos da CIDHS dedicados ao desenvolvimento humano e social</p>
+        </div>
+    </section>
+
+    <div class="main-content">
+        <!-- Featured News -->
+        <div class="featured-news fade-in">
+            <div class="featured-image">
+                <img src="https://images.unsplash.com/photo-1523240795612-9a054b0db644?w=1200" alt="Notícia Destacada">
+                <span class="featured-badge">
+                    <i class="fas fa-star"></i> DESTAQUE
+                </span>
+            </div>
+            <div class="featured-content">
+                <div class="featured-meta">
+                    <span class="meta-item">
+                        <i class="fas fa-calendar"></i>
+                        25 de Outubro, 2025
+                    </span>
+                    <span class="meta-item">
+                        <i class="fas fa-user"></i>
+                        CIDHS
+                    </span>
+                    <span class="meta-item">
+                        <i class="fas fa-tag"></i>
+                        Lançamento
+                    </span>
+                </div>
+                <h2>CIDHS Lança Nova Iniciativa de Capacitação em Governação Participativa para Comunidades da Zambézia</h2>
+                <p>
+                    A CIDHS está orgulhosa de anunciar o lançamento de um programa abrangente de capacitação em governação participativa, 
+                    dirigido a lideranças comunitárias e técnicos de administração local em toda a província da Zambézia. Esta iniciativa 
+                    visa fortalecer as capacidades de gestão comunitária, promover transparência administrativa e apoiar o desenvolvimento 
+                    local sustentável através de metodologias inovadoras e participativas.
+                </p>
+                <a href="#" class="read-more-btn">
+                    Ler Mais <i class="fas fa-arrow-right"></i>
+                </a>
+            </div>
+        </div>
+
+        <!-- Latest News -->
+        <div class="section-header fade-in">
+            <div class="section-tag">
+                <i class="fas fa-clock"></i>
+                ÚLTIMAS NOTÍCIAS
+            </div>
+            <h2 class="section-title">Actualizações Recentes</h2>
+        </div>
+
+        <div class="news-grid">
+            <div class="news-card fade-in">
+                <div class="news-image">
+                    <img src="https://images.unsplash.com/photo-1491975474562-1f4e30bc9468?w=600" alt="Publicação">
+                    <span class="news-category">PUBLICAÇÃO</span>
+                </div>
+                <div class="news-content">
+                    <div class="news-date">
+                        <i class="fas fa-calendar"></i>
+                        20 de Outubro, 2025
+                    </div>
+                    <h3>Novo Artigo Sobre Democracia e Participação Política em Moçambique</h3>
+                    <p class="news-excerpt">
+                        Ruben Ulaia publica artigo na Revista Internacional Semiárido analisando os desafios da paz e reconciliação nacional.
+                    </p>
+                    <div class="news-footer">
+                        <div class="news-author">
+                            <div class="author-avatar">RU</div>
+                            <span class="author-name">Ruben Ulaia</span>
+                        </div>
+                        <a href="#" class="read-more-link">
+                            Ler Mais <i class="fas fa-arrow-right"></i>
+                        </a>
+                    </div>
+                </div>
+            </div>
+
+            <div class="news-card fade-in">
+                <div class="news-image">
+                    <img src="https://images.unsplash.com/photo-1529070538774-1843cb3265df?w=600" alt="Workshop">
+                    <span class="news-category">FORMAÇÃO</span>
+                </div>
+                <div class="news-content">
+                    <div class="news-date">
+                        <i class="fas fa-calendar"></i>
+                        15 de Outubro, 2025
+                    </div>
+                    <h3>Workshop de Capacitação em Género e Direitos Reprodutivos Concluído com Sucesso</h3>
+                    <p class="news-excerpt">
+                        Mais de 60 participantes de organizações da sociedade civil receberam formação especializada em Quelimane.
+                    </p>
+                    <div class="news-footer">
+                        <div class="news-author">
+                            <div class="author-avatar">CI</div>
+                            <span class="author-name">CIDHS</span>
+                        </div>
+                        <a href="#" class="read-more-link">
+                            Ler Mais <i class="fas fa-arrow-right"></i>
+                        </a>
+                    </div>
+                </div>
+            </div>
+
+            <div class="news-card fade-in">
+                <div class="news-image">
+                    <img src="https://images.unsplash.com/photo-1582213782179-e0d53f98f2ca?w=600" alt="Parceria">
+                    <span class="news-category">PARCERIA</span>
+                </div>
+                <div class="news-content">
+                    <div class="news-date">
+                        <i class="fas fa-calendar"></i>
+                        10 de Outubro, 2025
+                    </div>
+                    <h3>CIDHS Firma Parceria com UNICEF para Estudo sobre Abandono Escolar</h3>
+                    <p class="news-excerpt">
+                        Nova colaboração visa investigar causas e propor soluções para redução do abandono escolar na Zambézia.
+                    </p>
+                    <div class="news-footer">
+                        <div class="news-author">
+                            <div class="author-avatar">BS</div>
+                            <span class="author-name">B. Sapane</span>
+                        </div>
+                        <a href="#" class="read-more-link">
+                            Ler Mais <i class="fas fa-arrow-right"></i>
+                        </a>
+                    </div>
+                </div>
+            </div>
+
+            <div class="news-card fade-in">
+                <div class="news-image">
+                    <img src="https://images.unsplash.com/photo-1488521787991-ed7bbaae773c?w=600" alt="Investigação">
+                    <span class="news-category">INVESTIGAÇÃO</span>
+                </div>
+                <div class="news-content">
+                    <div class="news-date">
+                        <i class="fas fa-calendar"></i>
+                        5 de Outubro, 2025
+                    </div>
+                    <h3>Iniciado Projecto de Investigação sobre Mudanças Climáticas e Comunidades Costeiras</h3>
+                    <p class="news-excerpt">
+                        CIDHS inicia estudo sobre resiliência comunitária face às mudanças climáticas na zona costeira de Quelimane.
+                    </p>
+                    <div class="news-footer">
+                        <div class="news-author">
+                            <div class="author-avatar">AM</div>
+                            <span class="author-name">A. Mapfala</span>
+                        </div>
+                        <a href="#" class="read-more-link">
+                            Ler Mais <i class="fas fa-arrow-right"></i>
+                        </a>
+                    </div>
+                </div>
+            </div>
+
+            <div class="news-card fade-in">
+                <div class="news-image">
+                    <img src="https://images.unsplash.com/photo-1560264280-88b68371db39?w=600" alt="Livro">
+                    <span class="news-category">LIVRO</span>
+                </div>
+                <div class="news-content">
+                    <div class="news-date">
+                        <i class="fas fa-calendar"></i>
+                        1 de Outubro, 2025
+                    </div>
+                    <h3>Lançamento do Livro "Contributo do Programa Estratégico para a Redução da Pobreza Urbana"</h3>
+                    <p class="news-excerpt">
+                        Obra analisa impactos dos programas de redução da pobreza em Quelimane entre 2014 e 2018.
+                    </p>
+                    <div class="news-footer">
+                        <div class="news-author">
+                            <div class="author-avatar">RU</div>
+                            <span class="author-name">Ruben Ulaia</span>
+                        </div>
+                        <a href="#" class="read-more-link">
+                            Ler Mais <i class="fas fa-arrow-right"></i>
+                        </a>
+                    </div>
+                </div>
+            </div>
+
+            <div class="news-card fade-in">
+                <div class="news-image">
+                    <img src="https://images.unsplash.com/photo-1517245386807-bb43f82c33c4?w=600" alt="Conferência">
+                    <span class="news-category">CONFERÊNCIA</span>
+                </div>
+                <div class="news-content">
+                    <div class="news-date">
+                        <i class="fas fa-calendar"></i>
+                        28 de Setembro, 2025
+                    </div>
+                    <h3>CIDHS Participa em Conferência Internacional sobre Desenvolvimento Sustentável</h3>
+                    <p class="news-excerpt">
+                        Apresentação de resultados de pesquisas sobre agricultura sustentável e segurança alimentar.
+                    </p>
+                    <div class="news-footer">
+                        <div class="news-author">
+                            <div class="author-avatar">CI</div>
+                            <span class="author-name">CIDHS</span>
+                        </div>
+                        <a href="#" class="read-more-link">
+                            Ler Mais <i class="fas fa-arrow-right"></i>
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Events Section -->
+    <section class="events-section">
+        <div class="events-container">
+            <div class="section-header fade-in">
+                <div class="section-tag">
+                    <i class="fas fa-calendar-alt"></i>
+                    PRÓXIMOS EVENTOS
+                </div>
+                <h2 class="section-title">Agenda de Actividades</h2>
+            </div>
+
+            <div class="events-grid">
+                <div class="event-card fade-in">
+                    <div class="event-date-badge">
+                        <div class="event-day">15</div>
+                        <div class="event-month">NOV 2025</div>
+                    </div>
+                    <div class="event-content">
+                        <span class="event-type">Workshop</span>
+                        <h3>Formação em Monitoria e Avaliação de Projectos Sociais</h3>
+                        <div class="event-details">
+                            <div class="event-detail-item">
+                                <i class="fas fa-clock"></i>
+                                <span>09:00 - 17:00</span>
+                            </div>
+                            <div class="event-detail-item">
+                                <i class="fas fa-map-marker-alt"></i>
+                                <span>Sede CIDHS, Quelimane</span>
+                            </div>
+                            <div class="event-detail-item">
+                                <i class="fas fa-users"></i>
+                                <span>30 Participantes</span>
+                            </div>
+                        </div>
+                        <div class="event-cta">
+                            <a href="#" class="event-btn">
+                                <i class="fas fa-info-circle"></i> Detalhes
+                            </a>
+                            <a href="https://wa.me/258846205197" class="event-btn">
+                                <i class="fas fa-user-plus"></i> Inscrever
+                            </a>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="event-card fade-in">
+                    <div class="event-date-badge">
+                        <div class="event-day">22</div>
+                        <div class="event-month">NOV 2025</div>
+                    </div>
+                    <div class="event-content">
+                        <span class="event-type">Seminário</span>
+                        <h3>Políticas Públicas Inclusivas: Desafios e Oportunidades</h3>
+                        <div class="event-details">
+                            <div class="event-detail-item">
+                                <i class="fas fa-clock"></i>
+                                <span>14:00 - 18:00</span>
+                            </div>
+                            <div class="event-detail-item">
+                                <i class="fas fa-map-marker-alt"></i>
+                                <span>Auditório Municipal, Quelimane</span>
+                            </div>
+                            <div class="event-detail-item">
+                                <i class="fas fa-users"></i>
+                                <span>100 Participantes</span>
+                            </div>
+                        </div>
+                        <div class="event-cta">
+                            <a href="#" class="event-btn">
+                                <i class="fas fa-info-circle"></i> Detalhes
+                            </a>
+                            <a href="https://wa.me/258846205197" class="event-btn">
+                                <i class="fas fa-user-plus"></i> Inscrever
+                            </a>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="event-card fade-in">
+                    <div class="event-date-badge">
+                        <div class="event-day">5</div>
+                        <div class="event-month">DEZ 2025</div>
+                    </div>
+                    <div class="event-content">
+                        <span class="event-type">Conferência</span>
+                        <h3>Educação Inclusiva e Inovação Pedagógica na Zambézia</h3>
+                        <div class="event-details">
+                            <div class="event-detail-item">
+                                <i class="fas fa-clock"></i>
+                                <span>08:30 - 16:00</span>
+                            </div>
+                            <div class="event-detail-item">
+                                <i class="fas fa-map-marker-alt"></i>
+                                <span>Universidade Pedagógica</span>
+                            </div>
+                            <div class="event-detail-item">
+                                <i class="fas fa-users"></i>
+                                <span>150 Participantes</span>
+                            </div>
+                        </div>
+                        <div class="event-cta">
+                            <a href="#" class="event-btn">
+                                <i class="fas fa-info-circle"></i> Detalhes
+                            </a>
+                            <a href="https://wa.me/258846205197" class="event-btn">
+                                <i class="fas fa-user-plus"></i> Inscrever
+                            </a>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="event-card fade-in">
+                    <div class="event-date-badge">
+                        <div class="event-day">12</div>
+                        <div class="event-month">DEZ 2025</div>
+                    </div>
+                    <div class="event-content">
+                        <span class="event-type">Lançamento</span>
+                        <h3>Apresentação de Resultados: Estudo sobre Agricultura Sustentável</h3>
+                        <div class="event-details">
+                            <div class="event-detail-item">
+                                <i class="fas fa-clock"></i>
+                                <span>10:00 - 13:00</span>
+                            </div>
+                            <div class="event-detail-item">
+                                <i class="fas fa-map-marker-alt"></i>
+                                <span>Centro Comunitário, Nicoadala</span>
+                            </div>
+                            <div class="event-detail-item">
+                                <i class="fas fa-users"></i>
+                                <span>80 Participantes</span>
+                            </div>
+                        </div>
+                        <div class="event-cta">
+                            <a href="#" class="event-btn">
+                                <i class="fas fa-info-circle"></i> Detalhes
+                            </a>
+                            <a href="https://wa.me/258846205197" class="event-btn">
+                                <i class="fas fa-user-plus"></i> Inscrever
+                            </a>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="event-card fade-in">
+                    <div class="event-date-badge">
+                        <div class="event-day">18</div>
+                        <div class="event-month">DEZ 2025</div>
+                    </div>
+                    <div class="event-content">
+                        <span class="event-type">Workshop</span>
+                        <h3>Empoderamento Económico de Mulheres Rurais</h3>
+                        <div class="event-details">
+                            <div class="event-detail-item">
+                                <i class="fas fa-clock"></i>
+                                <span>09:00 - 16:00</span>
+                            </div>
+                            <div class="event-detail-item">
+                                <i class="fas fa-map-marker-alt"></i>
+                                <span>Distrito de Mocuba</span>
+                            </div>
+                            <div class="event-detail-item">
+                                <i class="fas fa-users"></i>
+                                <span>50 Participantes</span>
+                            </div>
+                        </div>
+                        <div class="event-cta">
+                            <a href="#" class="event-btn">
+                                <i class="fas fa-info-circle"></i> Detalhes
+                            </a>
+                            <a href="https://wa.me/258846205197" class="event-btn">
+                                <i class="fas fa-user-plus"></i> Inscrever
+                            </a>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="event-card fade-in">
+                    <div class="event-date-badge">
+                        <div class="event-day">10</div>
+                        <div class="event-month">JAN 2026</div>
+                    </div>
+                    <div class="event-content">
+                        <span class="event-type">Mesa Redonda</span>
+                        <h3>Diálogo Multi-Sectorial: ODS e Desenvolvimento Local</h3>
+                        <div class="event-details">
+                            <div class="event-detail-item">
+                                <i class="fas fa-clock"></i>
+                                <span>15:00 - 18:00</span>
+                            </div>
+                            <div class="event-detail-item">
+                                <i class="fas fa-map-marker-alt"></i>
+                                <span>Governo Provincial, Quelimane</span>
+                            </div>
+                            <div class="event-detail-item">
+                                <i class="fas fa-users"></i>
+                                <span>60 Participantes</span>
+                            </div>
+                        </div>
+                        <div class="event-cta">
+                            <a href="#" class="event-btn">
+                                <i class="fas fa-info-circle"></i> Detalhes
+                            </a>
+                            <a href="https://wa.me/258846205197" class="event-btn">
+                                <i class="fas fa-user-plus"></i> Inscrever
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Timeline Section -->
+    <section class="timeline-section">
+        <div class="section-header fade-in">
+            <div class="section-tag">
+                <i class="fas fa-history"></i>
+                LINHA DO TEMPO
+            </div>
+            <h2 class="section-title">Marcos Importantes</h2>
+        </div>
+
+        <div class="timeline">
+            <div class="timeline-item fade-in">
+                <div class="timeline-dot"></div>
+                <div class="timeline-content">
+                    <div class="timeline-date">
+                        <i class="fas fa-calendar"></i> Janeiro 2025
+                    </div>
+                    <h4>Fundação da CIDHS</h4>
+                    <p>Constituição oficial da Consultoria Interdisciplinar em Desenvolvimento Humano e Social em Quelimane, Zambézia.</p>
+                </div>
+            </div>
+
+            <div class="timeline-item fade-in">
+                <div class="timeline-dot"></div>
+                <div class="timeline-content">
+                    <div class="timeline-date">
+                        <i class="fas fa-calendar"></i> Março 2025
+                    </div>
+                    <h4>Primeiro Projecto de Capacitação</h4>
+                    <p>Lançamento do programa de formação em governação participativa com 120 lideranças comunitárias.</p>
+                </div>
+            </div>
+
+            <div class="timeline-item fade-in">
+                <div class="timeline-dot"></div>
+                <div class="timeline-content">
+                    <div class="timeline-date">
+                        <i class="fas fa-calendar"></i> Junho 2025
+                    </div>
+                    <h4>Parceria Internacional</h4>
+                    <p>Assinatura de memorando de entendimento com UNICEF para projectos de educação e protecção infantil.</p>
+                </div>
+            </div>
+
+            <div class="timeline-item fade-in">
+                <div class="timeline-dot"></div>
+                <div class="timeline-content">
+                    <div class="timeline-date">
+                        <i class="fas fa-calendar"></i> Agosto 2025
+                    </div>
+                    <h4>Publicações Académicas</h4>
+                    <p>Lançamento de três artigos científicos em revistas internacionais sobre desenvolvimento humano e género.</p>
+                </div>
+            </div>
+
+            <div class="timeline-item fade-in">
+                <div class="timeline-dot"></div>
+                <div class="timeline-content">
+                    <div class="timeline-date">
+                        <i class="fas fa-calendar"></i> Outubro 2025
+                    </div>
+                    <h4>Expansão de Serviços</h4>
+                    <p>Ampliação das áreas de intervenção incluindo agricultura sustentável e sustentabilidade ambiental.</p>
+                </div>
+            </div>
+
+            <div class="timeline-item fade-in">
+                <div class="timeline-dot"></div>
+                <div class="timeline-content">
+                    <div class="timeline-date">
+                        <i class="fas fa-calendar"></i> Dezembro 2025
+                    </div>
+                    <h4>Conferência Anual</h4>
+                    <p>Realização da primeira conferência anual sobre desenvolvimento sustentável e políticas públicas inclusivas.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Newsletter Section -->
+    <section class="newsletter-section">
+        <div class="newsletter-content fade-in">
+            <h2><i class="fas fa-envelope-open-text"></i> Mantenha-se Informado</h2>
+            <p>Subscreva a nossa newsletter para receber as últimas notícias, eventos e publicações da CIDHS directamente no seu email</p>
+            <form class="newsletter-form">
+                <input type="email" class="newsletter-input" placeholder="Digite seu email" required>
+                <button type="submit" class="newsletter-btn">
+                    <i class="fas fa-paper-plane"></i> Subscrever
+                </button>
+            </form>
+        </div>
+    </section>
+
+    <footer>
+        <div class="footer-content">
+            <div class="footer-section">
+                <h4>
+                    <i class="fas fa-leaf"></i>
+                    CIDHS
+                </h4>
+                <p style="color: rgba(255,255,255,0.7); line-height: 1.6;">
+                    Consultoria Interdisciplinar em Desenvolvimento Humano e Social. Acompanhe nossas actualizações e eventos.
+                </p>
+            </div>
+
+            <div class="footer-section">
+                <h4>
+                    <i class="fas fa-compass"></i>
+                    NAVEGAÇÃO
+                </h4>
+                <ul>
+                    <li><a href="index.html"><i class="fas fa-chevron-right"></i> Início</a></li>
+                    <li><a href="index.html#sobre"><i class="fas fa-chevron-right"></i> Sobre</a></li>
+                    <li><a href="portfolio.html"><i class="fas fa-chevron-right"></i> Portfólio</a></li>
+                    <li><a href="noticias.html"><i class="fas fa-chevron-right"></i> Notícias</a></li>
+                </ul>
+            </div>
+
+            <div class="footer-section">
+                <h4>
+                    <i class="fas fa-map-marker-alt"></i>
+                    CONTACTO
+                </h4>
+                <ul>
+                    <li><a href="https://wa.me/258846205197" target="_blank"><i class="fab fa-whatsapp"></i> +258 84 620 5197</a></li>
+                    <li><a href="https://wa.me/258844142374" target="_blank"><i class="fab fa-whatsapp"></i> +258 84 414 2374</a></li>
+                    <li><a href="mailto:cidhs@cidhs.org"><i class="fas fa-envelope"></i> cidhs@cidhs.org</a></li>
+                    <li style="color: rgba(255,255,255,0.7);"><i class="fas fa-location-dot"></i> Av. Julius Nyerere, Quelimane</li>
+                </ul>
+            </div>
+
+            <div class="footer-section">
+                <h4>
+                    <i class="fas fa-share-alt"></i>
+                    REDES SOCIAIS
+                </h4>
+                <ul>
+                    <li><a href="#"><i class="fab fa-facebook"></i> Facebook</a></li>
+                    <li><a href="#"><i class="fab fa-twitter"></i> Twitter</a></li>
+                    <li><a href="#"><i class="fab fa-linkedin"></i> LinkedIn</a></li>
+                    <li><a href="#"><i class="fab fa-instagram"></i> Instagram</a></li>
+                </ul>
+            </div>
+        </div>
+
+        <div class="footer-bottom">
+            <p>Copyright © 2025 Todos os direitos reservados | CIDHS - Consultoria Interdisciplinar em Desenvolvimento Humano e Social</p>
+        </div>
+    </footer>
+
+    <script>
+        // Toggle menu hambúrguer
+        const hamburger = document.querySelector('.hamburger');
+        const navLinks = document.getElementById('navLinks');
+
+        hamburger.addEventListener('click', () => {
+            navLinks.classList.toggle('active');
+            hamburger.classList.toggle('active');
+        });
+
+        // Fechar menu ao clicar em um link (mobile)
+        document.querySelectorAll('.nav-links a').forEach(link => {
+            link.addEventListener('click', () => {
+                navLinks.classList.remove('active');
+                hamburger.classList.remove('active');
+            });
+        });
+
+        // Fade in on scroll
+        const observerOptions = {
+            threshold: 0.1,
+            rootMargin: '0px 0px -100px 0px'
+        };
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('visible');
+                }
+            });
+        }, observerOptions);
+
+        document.querySelectorAll('.fade-in').forEach(el => {
+            observer.observe(el);
+        });
+
+        // Smooth scroll
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({
+                        behavior: 'smooth',
+                        block: 'start'
+                    });
+                }
+            });
+        });
+
+        // Newsletter form submission
+        document.querySelector('.newsletter-form').addEventListener('submit', (e) => {
+            e.preventDefault();
+            alert('Obrigado por subscrever a nossa newsletter! Em breve receberá as nossas actualizações.');
+            e.target.reset();
+        });
+    </script>
+</body>
+</html>
